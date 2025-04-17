@@ -18,7 +18,7 @@ class QuestionFactory extends Factory
     {
         return [
             'quiz_id' => \App\Models\Quiz::all()->random()->id,
-            'name' => $this->faker->sentence(6) . " ?",
+            'name' => $this->faker->sentence(6).' ?',
         ];
     }
 }
