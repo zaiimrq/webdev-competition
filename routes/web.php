@@ -13,7 +13,8 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('quiz', QuizController::class)->name('quiz');
+    Route::get('quizzes', QuizController::class)->name('quizzes');
+    Volt::route('quizzes/{quiz:slug}', 'quizzes.questions')->name('quizzes.questions');
 });
 
 Route::middleware(['auth'])->group(function () {

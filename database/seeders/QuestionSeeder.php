@@ -14,6 +14,7 @@ class QuestionSeeder extends Seeder
     {
         Question::factory()
             ->count(25)
+            ->hasAnswers(4)
             ->create();
     }
 }

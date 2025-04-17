@@ -21,7 +21,7 @@
                     </div>
 
 
-                    <a href="/"
+                    <a wire:navigate href="{{ route('quizzes.questions', $quiz->slug) }}"
                         class="h-fit w-fit px-[1em] py-[0.25em] border-[1px] rounded-full flex justify-center items-center gap-[0.5em] overflow-hidden group hover:translate-y-[0.125em] duration-200 backdrop-blur-md">
                         <p class="text-sm">Start Quiz</p>
                         <svg class="size-4 group-hover:translate-x-[10%] duration-300" stroke="currentColor"

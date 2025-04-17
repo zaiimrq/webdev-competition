@@ -25,4 +25,16 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function getCorrectAnswer()
+    {
+        return $this->answers()
+            ->where('is_correct', true)
+            ->first();
+    }
+
+    public function getCorrectAnswerId(): int
+    {
+        return $this->getCorrectAnswer()->id;
+    }
 }

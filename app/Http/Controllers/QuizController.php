@@ -11,7 +11,7 @@ class QuizController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('quiz', [
+        return view('quizzes', [
             'quizzes' => \App\Models\Quiz::all(),
         ]);
     }
