@@ -9,7 +9,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/custom.js'])
     <style>
-        /* Remove all custom styles except this one */
         .paralax::before {
             content: "";
             position: absolute;
@@ -19,20 +18,32 @@
             background: linear-gradient(to top, rgb(196 196 195), transparent);
             z-index: 1000;
         }
+
+        .cursor-glow {
+            cursor: pointer;
+            transition: filter 0.3s;
+        }
+
+        .cursor-glow:hover {
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+        }
     </style>
+    <link rel="preload" as="image" href="{{ Vite::asset('resources/img/stars.png') }}">
+    <link rel="preload" as="image" href="{{ Vite::asset('resources/img/meteorid.png') }}">
+    <link rel="preload" as="image" href="{{ Vite::asset('resources/img/rocket.png') }}">
 </head>
 
 <body class="bg-gradient-to-b from-black to-purple-950 font-['Acme'] scroll-smooth">
     <div
-        class="paralax relative h-[200vh] w-full p-4 md:p-[200px] lg:p-[300px] flex justify-center items-center overflow-hidden">
+        class="paralax relative h-[150vh] w-full p-4 md:p-[150px] lg:p-[250px] flex justify-center items-center overflow-hidden">
         <img src="{{ Vite::asset('resources/img/stars.png') }}" id="stars"
-            class="absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out">
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out">
         <img src="{{ Vite::asset('resources/img/meteorid.png') }}" id="meteorid"
-            class="absolute inset-0 w-full h-full object-cover z-[100] transition-all duration-700 ease-in-out">
+            class="absolute inset-0 w-full h-full object-cover z-[100] transition-all duration-1000 ease-out cursor-glow">
         <img src="{{ Vite::asset('resources/img/rocket.png') }}" id="rocket"
-            class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105">
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out cursor-glow hover:scale-110">
         <h1 id="text"
-            class="absolute -bottom-[100px] text-2xl md:text-4xl lg:text-[4.8em] text-white tracking-wider text-center drop-shadow-[3px_3px_10px_rgba(128,128,128,1)] z-50 transition-all duration-700 ease-in-out">
+            class="absolute -bottom-[100px] text-2xl md:text-4xl lg:text-[4.8em] text-white tracking-wider text-center drop-shadow-[3px_3px_10px_rgba(128,128,128,1)] z-50 transition-all duration-1000 ease-out">
             Selamat Datang <br>di Kelas Kosmik!
         </h1>
     </div>
@@ -64,7 +75,21 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 1000
+        });
+
+        // Smooth scroll polyfill
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
     @vite('resources/js/parallax.js')
 </body>
