@@ -7,7 +7,11 @@ use Livewire\Volt\Volt;
 Route::get('/', function () {
     return view('welcome.index');
 })->name('home');
-Route::view('/menu', 'welcome.menu');
+
+Route::prefix('/menu')->group(function () {
+    Route::view('/', 'welcome.menu')->name('menu');
+    Route::view('/solar-system', 'welcome.solar-system')->name('solar-system');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

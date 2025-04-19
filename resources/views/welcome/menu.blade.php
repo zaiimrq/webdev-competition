@@ -38,7 +38,7 @@
         <div class="relative z-[2000] w-full max-w-7xl px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="space-y-8">
-                    <a href="tatasurya.html" data-sound="true" class="menu-link block group">
+                    <a wire:navigate :href="route('solar-system')" data-sound="true" class="menu-link block group">
                         <div
                             class="bg-[#ef9ff3]/90 hover:bg-[#bbd1f5] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                             <div class="text-center space-y-4">
