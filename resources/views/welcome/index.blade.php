@@ -27,6 +27,51 @@
         .cursor-glow:hover {
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
         }
+
+        .login-button {
+            animation: fadeIn 0.5s ease-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(56, 7, 59, 0.8);
+        }
+
+        .login-button:active {
+            transform: scale(0.95);
+        }
+
+        .login-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease-out, height 0.6s ease-out;
+        }
+
+        .login-button:active::after {
+            width: 200%;
+            height: 200%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
     <link rel="preload" as="image" href="{{ Vite::asset('resources/img/stars.png') }}">
     <link rel="preload" as="image" href="{{ Vite::asset('resources/img/meteorid.png') }}">
@@ -34,6 +79,12 @@
 </head>
 
 <body class="bg-gradient-to-b from-black to-purple-950 font-['Acme'] scroll-smooth">
+    <div class="fixed top-4 right-4 md:top-8 md:right-8 z-[1001]">
+        <a wire:navigate href="/login"
+           class="login-button inline-flex items-center px-6 py-2 bg-[#38073b] text-white rounded-full hover:bg-opacity-90 transition-all duration-300 text-sm md:text-base">
+            <span>Login</span>
+        </a>
+    </div>
     <div
         class="paralax relative h-[150vh] w-full p-4 md:p-[150px] lg:p-[250px] flex justify-center items-center overflow-hidden">
         <img src="{{ Vite::asset('resources/img/stars.png') }}" id="stars"
@@ -50,12 +101,12 @@
 
     <div class="relative bg-[#c4c2c3] py-20 md:py-40">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="1500"
+            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="500"
                 data-aos-easing="ease-in-out">
                 <img src="{{ Vite::asset('resources/img/png/astro2.png') }}" id="astro"
                     class="w-full md:w-4/5 mx-auto transition-all duration-500 ease-in-out hover:scale-110">
             </div>
-            <div class="w-full md:w-1/2 text-center md:text-left px-4" data-aos="zoom-in-left" data-aos-duration="2000"
+            <div class="w-full md:w-1/2 text-center md:text-left px-4" data-aos="zoom-in-left" data-aos-duration="1000"
                 data-aos-easing="ease-in-out">
                 <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">Bergabunglah dengan Astro dalam
                     Petualangan Luar Angkasa! 🚀</h2>
