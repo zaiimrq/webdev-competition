@@ -25,24 +25,24 @@
 <body class="bg-gradient-to-b from-black to-purple-950 font-['Acme'] scroll-smooth">
     <div class="paralax relative h-[200vh] w-full p-[300px] flex justify-center items-center overflow-hidden">
         <img src="{{ Vite::asset('resources/img/stars.png') }}" id="stars"
-            class="absolute inset-0 w-full h-full object-cover transition-all duration-200">
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out">
         <img src="{{ Vite::asset('resources/img/meteorid.png') }}" id="meteorid"
-            class="absolute inset-0 w-full h-full object-cover z-[100] transition-all duration-200">
+            class="absolute inset-0 w-full h-full object-cover z-[100] transition-all duration-700 ease-in-out">
         <img src="{{ Vite::asset('resources/img/rocket.png') }}" id="rocket"
-            class="absolute inset-0 w-full h-full object-cover transition-all duration-200">
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105">
         <h1 id="text"
-            class="absolute -bottom-[100px] text-[4.8em] text-white tracking-wider text-center drop-shadow-[3px_3px_10px_rgba(128,128,128,1)] z-50 transition-all duration-200">
+            class="absolute -bottom-[100px] text-[4.8em] text-white tracking-wider text-center drop-shadow-[3px_3px_10px_rgba(128,128,128,1)] z-50 transition-all duration-700 ease-in-out">
             Selamat Datang <br>di Kelas Kosmik!
         </h1>
     </div>
 
     <div class="relative bg-[#c4c2c3] py-40">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
-            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="1000">
+            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-out">
                 <img src="{{ Vite::asset('resources/img/png/astro2.png') }}" id="astro"
-                    class="w-4/5 mx-auto transition-transform duration-100">
+                    class="w-4/5 mx-auto transition-all duration-500 ease-in-out hover:scale-110">
             </div>
-            <div class="w-full md:w-1/2" data-aos="zoom-in-left" data-aos-duration="1500">
+            <div class="w-full md:w-1/2" data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
                 <h2 class="text-4xl font-bold mb-6">Bergabunglah dengan Astro dalam Petualangan Luar Angkasa! 🚀</h2>
                 <p class="text-lg mb-8">
                     Halo, Aku Astro!🌟<br>
