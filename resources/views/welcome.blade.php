@@ -23,7 +23,8 @@
 </head>
 
 <body class="bg-gradient-to-b from-black to-purple-950 font-['Acme'] scroll-smooth">
-    <div class="paralax relative h-[200vh] w-full p-[300px] flex justify-center items-center overflow-hidden">
+    <div
+        class="paralax relative h-[200vh] w-full p-4 md:p-[200px] lg:p-[300px] flex justify-center items-center overflow-hidden">
         <img src="{{ Vite::asset('resources/img/stars.png') }}" id="stars"
             class="absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out">
         <img src="{{ Vite::asset('resources/img/meteorid.png') }}" id="meteorid"
@@ -31,27 +32,30 @@
         <img src="{{ Vite::asset('resources/img/rocket.png') }}" id="rocket"
             class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out hover:scale-105">
         <h1 id="text"
-            class="absolute -bottom-[100px] text-[4.8em] text-white tracking-wider text-center drop-shadow-[3px_3px_10px_rgba(128,128,128,1)] z-50 transition-all duration-700 ease-in-out">
+            class="absolute -bottom-[100px] text-2xl md:text-4xl lg:text-[4.8em] text-white tracking-wider text-center drop-shadow-[3px_3px_10px_rgba(128,128,128,1)] z-50 transition-all duration-700 ease-in-out">
             Selamat Datang <br>di Kelas Kosmik!
         </h1>
     </div>
 
-    <div class="relative bg-[#c4c2c3] py-40">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-12">
-            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-easing="ease-in-out">
+    <div class="relative bg-[#c4c2c3] py-20 md:py-40">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="1500"
+                data-aos-easing="ease-in-out">
                 <img src="{{ Vite::asset('resources/img/png/astro2.png') }}" id="astro"
-                    class="w-4/5 mx-auto transition-all duration-500 ease-in-out hover:scale-110">
+                    class="w-full md:w-4/5 mx-auto transition-all duration-500 ease-in-out hover:scale-110">
             </div>
-            <div class="w-full md:w-1/2" data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
-                <h2 class="text-4xl font-bold mb-6">Bergabunglah dengan Astro dalam Petualangan Luar Angkasa! 🚀</h2>
-                <p class="text-lg mb-8">
+            <div class="w-full md:w-1/2 text-center md:text-left px-4" data-aos="zoom-in-left" data-aos-duration="2000"
+                data-aos-easing="ease-in-out">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">Bergabunglah dengan Astro dalam
+                    Petualangan Luar Angkasa! 🚀</h2>
+                <p class="text-base md:text-lg mb-6 md:mb-8">
                     Halo, Aku Astro!🌟<br>
                     Bersama-sama, mari kita menjelajahi keajaiban tata surya!<br>
                     Di sini, kamu akan menemukan dunia yang penuh dengan bintang, planet, dan misteri kosmik yang
                     menunggu untuk diungkap!
                 </p>
                 <a href="/dashboard" id="button"
-                    class="inline-block px-12 py-3 bg-[#38073b] text-white rounded-full hover:opacity-90 transition-all duration-300">
+                    class="inline-block px-8 md:px-12 py-2 md:py-3 bg-[#38073b] text-white rounded-full hover:opacity-90 transition-all duration-300 text-sm md:text-base">
                     Ayo Mulai! 🚀
                 </a>
             </div>
