@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="fenomena.html" data-sound="true" class="menu-link block group">
+                    <a href="{{ route('menu.phenomena') }}" data-sound="true" class="menu-link block group">
                         <div
                             class="bg-[#ef9ff3]/90 hover:bg-[#bbd1f5] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                             <div class="text-center space-y-4">

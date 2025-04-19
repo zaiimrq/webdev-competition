@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::prefix('/menu')->group(function () {
     Route::view('/', 'welcome.menu')->name('menu');
     Route::view('/solar-system', 'welcome.solar-system')->name('solar-system');
+    Route::view('/phenomena', 'welcome.menu.phenomena')->name('menu.phenomena');
 });
 
 Route::view('dashboard', 'dashboard')
