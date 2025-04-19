@@ -105,9 +105,6 @@ new
                 <div class="border-b border-zinc-200 dark:border-zinc-800 pb-6 mb-8">
                     <div class="flex items-center justify-between mb-4">
                         <h1 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{{ $quiz->name }}</h1>
-                        <span class="px-3 py-1 bg-fuchsia-100/80 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-300 rounded-full text-sm font-medium">
-                            {{ $quiz->category ?? 'General' }}
-                        </span>
                     </div>
 
                     @if($quiz->description)
@@ -118,13 +115,15 @@ new
                     <div class="flex items-center space-x-6 text-sm text-zinc-500 dark:text-zinc-400">
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                             <span>{{ $quiz->created_at->format('M d, Y') }}</span>
                         </div>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                             </svg>
                             <span>{{ $quiz->questions->count() }} Questions</span>
                         </div>
@@ -142,7 +141,8 @@ new
                         @foreach ($quiz->questions as $index => $question)
                             <div class="border-b border-zinc-200 dark:border-zinc-800 pb-6 last:border-0">
                                 <div class="mb-4">
-                                    <span class="px-3 py-1 bg-fuchsia-100/80 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-300 rounded-full text-sm font-medium">
+                                    <span
+                                        class="px-3 py-1 bg-fuchsia-100/80 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-300 rounded-full text-sm font-medium">
                                         Question {{ $index + 1 }}
                                     </span>
                                     <h2 class="text-xl font-semibold mt-2 text-zinc-700 dark:text-zinc-200">
@@ -151,18 +151,18 @@ new
                                 </div>
                                 <div class="grid grid-cols-1 gap-3">
                                     @foreach ($question->answers as $answer)
-                                        <button type="button"
-                                            x-on:click="answers[{{ $index }}] = '{{ $answer->id }}';
-                                                      localStorage.setItem('quiz_{{ $quiz->id }}_answers', JSON.stringify(answers));
-                                                      $wire.selectAnswer({{ $index }}, '{{ $answer->id }}')"
+                                        <button type="button" x-on:click="answers[{{ $index }}] = '{{ $answer->id }}';
+                                                                      localStorage.setItem('quiz_{{ $quiz->id }}_answers', JSON.stringify(answers));
+                                                                      $wire.selectAnswer({{ $index }}, '{{ $answer->id }}')"
                                             x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
-                                                ? 'bg-fuchsia-50 dark:bg-fuchsia-900/20 border border-fuchsia-200 dark:border-fuchsia-700 shadow-sm'
-                                                : 'bg-white dark:bg-zinc-800/50 hover:bg-fuchsia-50/50 dark:hover:bg-fuchsia-900/10 border border-zinc-200 dark:border-zinc-700'"
+                                                                ? 'bg-fuchsia-50 dark:bg-fuchsia-900/20 border border-fuchsia-200 dark:border-fuchsia-700 shadow-sm'
+                                                                : 'bg-white dark:bg-zinc-800/50 hover:bg-fuchsia-50/50 dark:hover:bg-fuchsia-900/10 border border-zinc-200 dark:border-zinc-700'"
                                             class="group relative w-full text-left p-4 rounded-lg transition-all duration-200 ease-in-out">
                                             <div class="flex items-center space-x-3">
-                                                <span x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
-                                                    ? 'bg-fuchsia-500/80 text-white'
-                                                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-fuchsia-100 dark:group-hover:bg-fuchsia-800/30'"
+                                                <span
+                                                    x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
+                                                                    ? 'bg-fuchsia-500/80 text-white'
+                                                                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-fuchsia-100 dark:group-hover:bg-fuchsia-800/30'"
                                                     class="flex items-center justify-center w-8 h-8 rounded-full transition-colors">
                                                     {{ $loop->iteration }}
                                                 </span>
@@ -178,21 +178,21 @@ new
                         @if($error)
                             <p class="text-rose-500 dark:text-rose-400 mb-4" x-init="isLoading = false">{{ $error }}</p>
                         @endif
-                        <button x-bind:disabled="isLoading"
-                            x-on:click="isLoading = true;
-                                      $nextTick(() => {
-                                          $wire.submitQuiz().then(() => {
-                                              isLoading = false;
-                                          }).catch(() => {
-                                              isLoading = false;
-                                          });
-                                      });"
-                            class="px-8 py-3 rounded-lg bg-fuchsia-500/90 hover:bg-fuchsia-600/90 dark:bg-fuchsia-600/80 dark:hover:bg-fuchsia-700/80 text-white
-                                   shadow-md hover:shadow-fuchsia-500/10 dark:hover:shadow-fuchsia-500/5 transition-all duration-200
-                                   font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                        <button x-bind:disabled="isLoading" x-on:click="isLoading = true;
+                                              $nextTick(() => {
+                                                  $wire.submitQuiz().then(() => {
+                                                      isLoading = false;
+                                                  }).catch(() => {
+                                                      isLoading = false;
+                                                  });
+                                              });" class="px-8 py-3 rounded-lg bg-fuchsia-500/90 hover:bg-fuchsia-600/90 dark:bg-fuchsia-600/80 dark:hover:bg-fuchsia-700/80 text-white
+                                           shadow-md hover:shadow-fuchsia-500/10 dark:hover:shadow-fuchsia-500/5 transition-all duration-200
+                                           font-medium disabled:opacity-50 disabled:cursor-not-allowed">
                             <template x-if="isLoading">
-                                <svg class="animate-spin h-5 w-5 mr-2 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <svg class="animate-spin h-5 w-5 mr-2 text-white inline-block"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                                    </circle>
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                                 </svg>
                             </template>
@@ -205,12 +205,13 @@ new
     @else
         <div class="bg-white/80 dark:bg-zinc-900/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center">
             <h2 class="text-2xl font-bold mb-4 text-zinc-800 dark:text-zinc-100">Quiz Completed!</h2>
-            <p class="text-lg text-zinc-700 dark:text-zinc-300">Your score: {{ $score }} out of {{ $quiz->questions->count() }}</p>
+            <p class="text-lg text-zinc-700 dark:text-zinc-300">Your score: {{ $score }} out of
+                {{ $quiz->questions->count() }}</p>
             <p class="text-zinc-500 dark:text-zinc-400 mt-2">
                 Correct: {{ $score }} | Incorrect: {{ $quiz->questions->count() - $score }}
             </p>
             <a wire:navigate href="/quizzes"
-               class="mt-6 inline-block px-6 py-2 rounded-lg bg-fuchsia-500/90 hover:bg-fuchsia-600/90 dark:bg-fuchsia-600/80 dark:hover:bg-fuchsia-700/80 text-white font-medium shadow-md transition-all duration-200">
+                class="mt-6 inline-block px-6 py-2 rounded-lg bg-fuchsia-500/90 hover:bg-fuchsia-600/90 dark:bg-fuchsia-600/80 dark:hover:bg-fuchsia-700/80 text-white font-medium shadow-md transition-all duration-200">
                 &larr; Back to Quizzes
             </a>
         </div>
