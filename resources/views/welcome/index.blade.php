@@ -67,6 +67,7 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -79,12 +80,14 @@
 </head>
 
 <body class="bg-gradient-to-b from-black to-purple-950 font-['Acme'] scroll-smooth">
-    <div class="fixed top-4 right-4 md:top-8 md:right-8 z-[1001]">
-        <a wire:navigate href="/login"
-           class="login-button inline-flex items-center px-6 py-2 bg-[#38073b] text-white rounded-full hover:bg-opacity-90 transition-all duration-300 text-sm md:text-base">
-            <span>Login</span>
-        </a>
-    </div>
+    @guest
+        <div class="fixed top-4 right-4 md:top-8 md:right-8 z-[1001]">
+            <a wire:navigate href="/login"
+                class="login-button inline-flex items-center px-6 py-2 bg-[#38073b] text-white rounded-full hover:bg-opacity-90 transition-all duration-300 text-sm md:text-base">
+                <span>Login</span>
+            </a>
+        </div>
+    @endguest
     <div
         class="paralax relative h-[150vh] w-full p-4 md:p-[150px] lg:p-[250px] flex justify-center items-center overflow-hidden">
         <img src="{{ Vite::asset('resources/img/stars.png') }}" id="stars"
@@ -101,8 +104,7 @@
 
     <div class="relative bg-[#c4c2c3] py-20 md:py-40">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="500"
-                data-aos-easing="ease-in-out">
+            <div class="w-full md:w-1/2" data-aos="zoom-in-right" data-aos-duration="500" data-aos-easing="ease-in-out">
                 <img src="{{ Vite::asset('resources/img/png/astro2.png') }}" id="astro"
                     class="w-full md:w-4/5 mx-auto transition-all duration-500 ease-in-out hover:scale-110">
             </div>
