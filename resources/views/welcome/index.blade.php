@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelas Kosmik</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/custom.js'])
     <style>
         /* Remove all custom styles except this one */
         .paralax::before {
@@ -54,7 +54,7 @@
                     Di sini, kamu akan menemukan dunia yang penuh dengan bintang, planet, dan misteri kosmik yang
                     menunggu untuk diungkap!
                 </p>
-                <a href="/dashboard" id="button"
+                <a wire:navigate href="/menu" id="button"
                     class="inline-block px-8 md:px-12 py-2 md:py-3 bg-[#38073b] text-white rounded-full hover:opacity-90 transition-all duration-300 text-sm md:text-base">
                     Ayo Mulai! 🚀
                 </a>
