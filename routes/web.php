@@ -1,15 +1,26 @@
 <?php
 
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
+
+Route::prefix('/menu')->group(function () {
+    Route::view('/', 'welcome.menu')->name('menu');
+    Route::view('/solar-system', 'welcome.solar-system')->name('solar-system');
+    Route::view('/phenomena', 'welcome.menu.phenomena')->name('menu.phenomena');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('quizzes', QuizController::class)->name('quizzes');
+    Volt::route('quizzes/{quiz:slug}', 'quizzes.questions')->name('quizzes.questions');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
