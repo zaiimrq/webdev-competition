@@ -13,19 +13,28 @@ use Filament\Tables\Table;
 class QuestionResource extends Resource
 {
     protected static ?string $model = Question::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
+    protected static ?string $navigationLabel = 'Pertanyaan';
+    protected static ?string $modelLabel = 'Pertanyaan';
+    protected static ?string $pluralModelLabel = 'Pertanyaan';
+    protected static ?string $navigationGroup = 'Manajemen Quiz';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('quiz_id')
-                    ->native(false)
-                    ->relationship('quiz', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
+                Forms\Components\Section::make('Informasi Pertanyaan')
+                    ->schema([
+                        Forms\Components\Select::make('quiz_id')
+                            ->label('Quiz')
+                            ->native(false)
+                            ->relationship('quiz', 'name')
+                            ->required(),
+                        Forms\Components\TextInput::make('name')
+                            ->label('Pertanyaan')
+                            ->required(),
+                    ]),
             ]);
     }
 

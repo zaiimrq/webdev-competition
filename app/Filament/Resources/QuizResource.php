@@ -15,16 +15,21 @@ use Illuminate\Support\Str;
 class QuizResource extends Resource
 {
     protected static ?string $model = Quiz::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationLabel = 'Quiz';
+    protected static ?string $modelLabel = 'Quiz';
+    protected static ?string $pluralModelLabel = 'Quiz';
+    protected static ?string $navigationGroup = 'Manajemen Quiz';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Quiz')
+                Forms\Components\Section::make('Informasi Quiz')
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label('Nama Quiz')
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
@@ -33,6 +38,7 @@ class QuizResource extends Resource
                             ->required()
                             ->unique(Quiz::class, 'slug'),
                         Forms\Components\Textarea::make('description')
+                            ->label('Deskripsi')
                             ->rows(3),
                     ]),
             ]);
