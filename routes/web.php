@@ -5,7 +5,7 @@ use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::prefix('/menu')->group(function () {
     Route::view('/', 'welcome.menu')->name('menu');
