@@ -85,7 +85,7 @@ new
     public function submitQuiz()
     {
         if (in_array('', $this->userAnswers)) {
-            $this->error = 'Please answer all questions before submitting.';
+            $this->error = 'Silahkan jawab semua pertanyaan sebelum mengirim.';
             return;
         }
 
@@ -142,14 +142,14 @@ new
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            <span>{{ $quiz->created_at->format('M d, Y') }}</span>
+                            <span>{{ $quiz->created_at->format('d M Y') }}</span>
                         </div>
                         <div class="flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                             </svg>
-                            <span>{{ $quiz->questions->count() }} Questions</span>
+                            <span>{{ $quiz->questions->count() }} Pertanyaan</span>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@ new
                 @if($quiz->questions->isEmpty())
                     <div class="text-center py-12">
                         <p class="text-zinc-600 dark:text-zinc-400 text-lg font-medium">
-                            No questions available for this quiz.
+                            Tidak ada pertanyaan tersedia untuk quiz ini.
                         </p>
                     </div>
                 @else
@@ -167,7 +167,7 @@ new
                                 <div class="mb-4">
                                     <span
                                         class="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full text-sm font-medium">
-                                        Question {{ $index + 1 }}
+                                        Pertanyaan {{ $index + 1 }}
                                     </span>
                                     <h2 class="text-xl font-semibold mt-2 text-zinc-700 dark:text-zinc-200">
                                         {{ $question->name }}
@@ -176,16 +176,16 @@ new
                                 <div class="grid grid-cols-1 gap-3">
                                     @foreach ($question->answers as $answer)
                                         <button type="button" x-on:click="answers[{{ $index }}] = '{{ $answer->id }}';
-                                                            $wire.selectAnswer({{ $index }}, '{{ $answer->id }}')"
+                                                                            $wire.selectAnswer({{ $index }}, '{{ $answer->id }}')"
                                             x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
-                                                                                                                                                ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 shadow-sm'
-                                                                                                                                                : 'bg-white dark:bg-zinc-800/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 border border-zinc-200 dark:border-zinc-700'"
+                                                                                                                                                                ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 shadow-sm'
+                                                                                                                                                                : 'bg-white dark:bg-zinc-800/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 border border-zinc-200 dark:border-zinc-700'"
                                             class="group relative w-full text-left p-4 rounded-lg transition-all duration-200 ease-in-out">
                                             <div class="flex items-center space-x-3">
                                                 <span
                                                     x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
-                                                                                                                                                    ? 'bg-blue-500/80 text-white'
-                                                                                                                                                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30'"
+                                                                                                                                                                    ? 'bg-blue-500/80 text-white'
+                                                                                                                                                                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30'"
                                                     class="flex items-center justify-center w-8 h-8 rounded-full transition-colors">
                                                     {{ $loop->iteration }}
                                                 </span>
@@ -202,16 +202,16 @@ new
                             <p class="text-rose-500 dark:text-rose-400 mb-4" x-init="isLoading = false">{{ $error }}</p>
                         @endif
                         <button x-bind:disabled="isLoading" x-on:click="isLoading = true;
-                                                                                      $nextTick(() => {
-                                                                                          $wire.submitQuiz().then(() => {
-                                                                                              isLoading = false;
-                                                                                          }).catch(() => {
-                                                                                              isLoading = false;
-                                                                                          });
-                                                                                      });"
+                                                                                              $nextTick(() => {
+                                                                                                  $wire.submitQuiz().then(() => {
+                                                                                                      isLoading = false;
+                                                                                                  }).catch(() => {
+                                                                                                      isLoading = false;
+                                                                                                  });
+                                                                                              });"
                             class="px-8 py-3 rounded-lg bg-blue-500/90 hover:bg-blue-600/90 dark:bg-blue-600/80 dark:hover:bg-blue-700/80 text-white
-                                                                                   shadow-md hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 transition-all duration-200
-                                                                                   font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                                                                                           shadow-md hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 transition-all duration-200
+                                                                                           font-medium disabled:opacity-50 disabled:cursor-not-allowed">
                             <template x-if="isLoading">
                                 <svg class="animate-spin h-5 w-5 mr-2 text-white inline-block"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -220,7 +220,7 @@ new
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                                 </svg>
                             </template>
-                            <span x-text="isLoading ? 'Submitting...' : 'Submit Quiz'"></span>
+                            <span x-text="isLoading ? 'Mengirim...' : 'Kirim Jawaban'"></span>
                         </button>
                     </div>
                 @endif
@@ -228,18 +228,18 @@ new
         </div>
     @else
         <div class="bg-white/80 dark:bg-zinc-900/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center">
-            <h2 class="text-2xl font-bold mb-4 text-zinc-800 dark:text-zinc-100">Quiz Completed!</h2>
-            <p class="text-lg text-zinc-700 dark:text-zinc-300">Your score: {{ $score }} out of
+            <h2 class="text-2xl font-bold mb-4 text-zinc-800 dark:text-zinc-100">Quiz Selesai!</h2>
+            <p class="text-lg text-zinc-700 dark:text-zinc-300">Nilai Anda: {{ $score }} dari
                 {{ $quiz->questions->count() }}
             </p>
             <p class="text-zinc-500 dark:text-zinc-400 mt-2">
-                Correct: {{ $score }} | Incorrect: {{ $quiz->questions->count() - $score }}
+                Benar: {{ $score }} | Salah: {{ $quiz->questions->count() - $score }}
             </p>
 
             <!-- Leaderboard Section -->
             <div class="mt-8 border-t border-zinc-200 dark:border-zinc-800 pt-6">
-                <h3 class="text-xl font-semibold mb-4 text-zinc-800 dark:text-zinc-100">Leaderboard</h3>
-                <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-4">Total Participants: {{ $totalParticipants }}</p>
+                <h3 class="text-xl font-semibold mb-4 text-zinc-800 dark:text-zinc-100">Papan Peringkat</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-4">Total Peserta: {{ $totalParticipants }}</p>
 
                 @if($leaderboard->count() > 0)
                     <div class="max-w-md mx-auto">
@@ -260,13 +260,13 @@ new
                         </div>
                     </div>
                 @else
-                    <p class="text-zinc-500 dark:text-zinc-400">No entries yet.</p>
+                    <p class="text-zinc-500 dark:text-zinc-400">Belum ada data.</p>
                 @endif
             </div>
 
             <a wire:navigate href="/quizzes"
                 class="mt-6 inline-block px-6 py-2 rounded-lg bg-blue-500/90 hover:bg-blue-600/90 dark:bg-blue-600/80 dark:hover:bg-blue-700/80 text-white font-medium shadow-md transition-all duration-200">
-                &larr; Back to Quizzes
+                &larr; Kembali ke Quiz
             </a>
         </div>
     @endif

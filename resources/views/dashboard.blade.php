@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('Dashboard')">
+<x-layouts.app :title="__('Beranda')">
     <div class="flex h-full w-full flex-1 flex-col gap-6">
         <!-- Stats Overview Cards -->
         <div class="grid auto-rows-min gap-6 md:grid-cols-3">
@@ -11,7 +11,7 @@
                         <div>
                             <span
                                 class="text-4xl font-bold text-neutral-900 dark:text-white">{{ $completedQuizzes }}/{{ $totalQuizzes }}</span>
-                            <p class="mt-1 text-sm text-neutral-500">Total Progress</p>
+                            <p class="mt-1 text-sm text-neutral-500">Total Progres</p>
                         </div>
                         <div
                             class="rounded-full bg-green-100/80 p-3 text-green-600 shadow-sm transition-transform duration-300 group-hover:scale-110 dark:bg-green-900/30 dark:text-green-400">
@@ -89,7 +89,8 @@
                                     style="width: {{ ($completedQuizzes / $totalQuizzes) * 100 }}%"></div>
                             </div>
                             <p class="mt-2 text-xs text-neutral-500 text-right">
-                                {{ round(($completedQuizzes / $totalQuizzes) * 100) }}% Selesai</p>
+                                {{ round(($completedQuizzes / $totalQuizzes) * 100) }}% Selesai
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -114,7 +115,8 @@
                                 <div class="flex-1">
                                     <h4 class="font-medium text-neutral-900 dark:text-white">{{ $quiz->quiz->name }}</h4>
                                     <p class="text-sm text-neutral-500">Selesai
-                                        {{ \Carbon\Carbon::parse($quiz->last_attempt)->diffForHumans() }}</p>
+                                        {{ \Carbon\Carbon::parse($quiz->last_attempt)->diffForHumans() }}
+                                    </p>
                                 </div>
                                 <div class="text-right">
                                     <span
@@ -163,6 +165,31 @@
                                 <p class="text-neutral-500 dark:text-neutral-400">Belum ada data</p>
                             </div>
                         @endforelse
+                    </div>
+                </div>
+
+                <!-- Coming Soon Quiz -->
+                <div
+                    class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+                    <h3 class="mb-6 text-lg font-semibold text-neutral-900 dark:text-white">Quiz Mendatang</h3>
+                    <div class="space-y-4">
+                        @if($remainingQuizzes > 0)
+                            @foreach(range(1, min(2, $remainingQuizzes)) as $i)
+                                <div
+                                    class="rounded-xl border border-neutral-100 bg-neutral-50/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-sm dark:border-neutral-700 dark:bg-neutral-800/50 dark:hover:bg-neutral-800">
+                                    <div class="mb-2 flex items-center justify-between">
+                                        <h4 class="font-medium text-neutral-900 dark:text-white">Quiz #{{ $i }}</h4>
+                                        <span
+                                            class="rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Tersedia</span>
+                                    </div>
+                                    <p class="text-sm text-neutral-500">Dimulai {{ now()->addDays($i)->diffForHumans() }}</p>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-center py-4">
+                                <p class="text-neutral-500 dark:text-neutral-400">Semua quiz telah diselesaikan</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -4,9 +4,10 @@
         <div
             class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/5 p-8">
             <div class="relative z-10">
-                <h1 class="text-3xl font-bold text-zinc-900 dark:text-white mb-2">Quiz Collection</h1>
-                <p class="text-zinc-600 dark:text-zinc-300 mb-6 max-w-2xl">Explore our collection of quizzes designed to
-                    test and improve your knowledge across various topics.</p>
+                <h1 class="text-3xl font-bold text-zinc-900 dark:text-white mb-2">Koleksi Quiz</h1>
+                <p class="text-zinc-600 dark:text-zinc-300 mb-6 max-w-2xl">Jelajahi koleksi quiz kami yang dirancang
+                    untuk
+                    menguji dan meningkatkan pengetahuan Anda dalam berbagai topik.</p>
             </div>
 
             <!-- Decorative Elements -->
@@ -30,7 +31,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm text-zinc-600 dark:text-zinc-400">Total Quizzes</p>
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400">Total Quiz</p>
                     <p class="text-2xl font-semibold text-zinc-900 dark:text-white">{{ $quizzes->count() }}</p>
                 </div>
             </div>
@@ -56,12 +57,12 @@
                                         d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <span class="text-sm text-zinc-600 dark:text-zinc-400">{{$quiz->questions->count()}}
-                                    Questions</span>
+                                    Pertanyaan</span>
                             </div>
 
                             <a wire:navigate href="{{ route('quizzes.questions', $quiz->slug) }}"
                                 class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 dark:bg-blue-500/5 dark:hover:bg-blue-500/10 text-blue-600 dark:text-blue-400 font-medium text-sm transition-all duration-200 group-hover:bg-blue-500 group-hover:text-white dark:group-hover:bg-blue-500 dark:group-hover:text-white">
-                                Start Quiz
+                                Mulai Quiz
                                 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
