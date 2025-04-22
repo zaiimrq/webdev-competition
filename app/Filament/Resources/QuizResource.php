@@ -2,16 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\QuizResource\Pages;
-use App\Filament\Resources\QuizResource\RelationManagers;
-use App\Models\Quiz;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\Quiz;
 use Filament\Tables;
+use Filament\Forms\Set;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\QuizResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\QuizResource\RelationManagers;
 
 class QuizResource extends Resource
 {
@@ -23,11 +25,19 @@ class QuizResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('slug')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\TextInput::make('description'),
+                Forms\Components\Section::make('Quiz')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                            ->required(),
+                        Forms\Components\TextInput::make('slug')
+                            ->readonly()
+                            ->required()
+                            ->unique(Quiz::class, 'slug'),
+                        Forms\Components\Textarea::make('description')
+                            ->rows(3),
+                    ]),
             ]);
     }
 
@@ -40,6 +50,7 @@ class QuizResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

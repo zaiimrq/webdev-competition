@@ -24,6 +24,7 @@ class QuestionResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('quiz_id')
+                    ->native(false)
                     ->relationship('quiz', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('name')
