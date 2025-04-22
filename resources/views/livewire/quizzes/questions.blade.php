@@ -63,7 +63,6 @@ new
     {
         $this->userAnswers[$questionIndex] = strval($answer);
 
-        // Store answer immediately
         $question = $this->quiz->questions[$questionIndex];
         $correctAnswer = $question->answers->where('id', $answer)->where('is_correct', true)->first();
         $isCorrect = $correctAnswer !== null;
