@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\QuizController;
-use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 

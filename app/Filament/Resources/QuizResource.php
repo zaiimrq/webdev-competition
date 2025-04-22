@@ -2,18 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
+use App\Filament\Resources\QuizResource\Pages;
 use App\Models\Quiz;
-use Filament\Tables;
-use Filament\Forms\Set;
+use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\QuizResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\QuizResource\RelationManagers;
 
 class QuizResource extends Resource
 {
@@ -29,7 +26,7 @@ class QuizResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
                         Forms\Components\TextInput::make('slug')
                             ->readonly()

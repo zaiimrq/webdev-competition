@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use App\Models\User;
 use App\Models\UserAnswer;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -49,13 +49,13 @@ class DashboardController extends Controller
             ->map(function ($attempts) {
                 return [
                     'date' => $attempts->first()->created_at->format('M'),
-                    'score' => round($attempts->avg('score') * 100, 1)
+                    'score' => round($attempts->avg('score') * 100, 1),
                 ];
             })->values();
 
         // Get leaderboard data
         $leaderboard = UserAnswer::select('user_id', DB::raw('SUM(score) as total_score'))
-            ->with(['user' => function($query) {
+            ->with(['user' => function ($query) {
                 $query->select('id', 'name', 'email');
             }])
             ->groupBy('user_id')
