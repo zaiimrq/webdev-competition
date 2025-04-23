@@ -1,19 +1,15 @@
 <?php
 
-use App\Http\Controllers\QuizController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
-Route::prefix('/menu')->group(function () {
-    Route::view('/', 'welcome.menu')->name('menu');
-    Route::view('/solar-system', 'welcome.solar-system')->name('solar-system');
-    Route::view('/phenomena', 'welcome.menu.phenomena')->name('menu.phenomena');
-});
 
-Route::view('dashboard', 'dashboard')
+Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -30,4 +26,4 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

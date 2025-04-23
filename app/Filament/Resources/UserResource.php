@@ -3,38 +3,47 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationLabel = 'Pengguna';
+    protected static ?string $modelLabel = 'Pengguna';
+    protected static ?string $pluralModelLabel = 'Pengguna';
+    protected static ?string $navigationGroup = 'Manajemen Pengguna';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('User')
+                Forms\Components\Section::make('Informasi Pengguna')
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label('Nama')
                             ->required(),
                         Forms\Components\TextInput::make('email')
                             ->email()
                             ->required(),
-                        Forms\Components\DateTimePicker::make('email_verified_at'),
+                        Forms\Components\DateTimePicker::make('email_verified_at')
+                            ->label('Email Terverifikasi'),
                         Forms\Components\TextInput::make('password')
                             ->password()
-                            ->required(),
-                        Forms\Components\TextInput::make('role')
+                            ->required()
+                            ->hiddenOn('edit'),
+                        Forms\Components\Select::make('role')
+                            ->label('Peran')
+                            ->options([
+                                'admin' => 'Admin',
+                                'user' => 'Pengguna',
+                            ])
                             ->required(),
                     ]),
             ]);

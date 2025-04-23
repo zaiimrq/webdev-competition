@@ -3,32 +3,38 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\QuestionResource\Pages;
-use App\Filament\Resources\QuestionResource\RelationManagers;
 use App\Models\Question;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class QuestionResource extends Resource
 {
     protected static ?string $model = Question::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
+    protected static ?string $navigationLabel = 'Pertanyaan';
+    protected static ?string $modelLabel = 'Pertanyaan';
+    protected static ?string $pluralModelLabel = 'Pertanyaan';
+    protected static ?string $navigationGroup = 'Manajemen Quiz';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('quiz_id')
-                    ->native(false)
-                    ->relationship('quiz', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
+                Forms\Components\Section::make('Informasi Pertanyaan')
+                    ->schema([
+                        Forms\Components\Select::make('quiz_id')
+                            ->label('Quiz')
+                            ->native(false)
+                            ->relationship('quiz', 'name')
+                            ->required(),
+                        Forms\Components\TextInput::make('name')
+                            ->label('Pertanyaan')
+                            ->required(),
+                    ]),
             ]);
     }
 

@@ -2,40 +2,43 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
+use App\Filament\Resources\QuizResource\Pages;
 use App\Models\Quiz;
-use Filament\Tables;
-use Filament\Forms\Set;
+use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\QuizResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\QuizResource\RelationManagers;
 
 class QuizResource extends Resource
 {
     protected static ?string $model = Quiz::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationLabel = 'Quiz';
+    protected static ?string $modelLabel = 'Quiz';
+    protected static ?string $pluralModelLabel = 'Quiz';
+    protected static ?string $navigationGroup = 'Manajemen Quiz';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Quiz')
+                Forms\Components\Section::make('Informasi Quiz')
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label('Nama Quiz')
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
                         Forms\Components\TextInput::make('slug')
                             ->readonly()
                             ->required()
                             ->unique(Quiz::class, 'slug'),
                         Forms\Components\Textarea::make('description')
+                            ->label('Deskripsi')
                             ->rows(3),
                     ]),
             ]);

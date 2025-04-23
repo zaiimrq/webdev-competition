@@ -27,11 +27,9 @@
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white); */
 
-    --primary-color: #38073b;
 
-
-    --color-accent: var(--color-fuchsia-600);
-    --color-accent-content: var(--color-fuchsia-600);
+    --color-accent: var(--color-blue-500);
+    --color-accent-content: var(--color-blue-600);
     --color-accent-foreground: var(--color-white);
 }
 
@@ -41,8 +39,8 @@
         --color-accent-content: var(--color-white);
         --color-accent-foreground: var(--color-neutral-800); */
 
-        --color-accent: var(--color-fuchsia-600);
-        --color-accent-content: var(--color-fuchsia-400);
+        --color-accent: var(--color-blue-500);
+        --color-accent-content: var(--color-blue-400);
         --color-accent-foreground: var(--color-white);
     }
 }
