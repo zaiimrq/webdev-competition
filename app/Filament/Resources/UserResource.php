@@ -46,10 +46,8 @@ class UserResource extends Resource
                             ->hiddenOn('edit'),
                         Forms\Components\Select::make('role')
                             ->label('Peran')
-                            ->options([
-                                'admin' => 'Admin',
-                                'user' => 'Pengguna',
-                            ])
+                            ->options(\App\Enums\Users\Role::class)
+                            ->default(\App\Enums\Users\Role::USER)
                             ->required(),
                     ]),
             ]);
