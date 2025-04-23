@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriWise</title>
     @vite(['resources/css/app.css', 'resources/js/custom.js'])
+    @livewireStyles()
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://unpkg.com/feather-icons/dist/feather.min.css" rel="stylesheet">
@@ -28,8 +29,8 @@
                     <a href="#benefits" class="text-gray-700 hover:text-teal-600 transition-colors">Keuntungan</a>
                     <a href="#about" class="text-gray-700 hover:text-teal-600 transition-colors">Tentang</a>
                     <div class="h-5 w-px bg-gray-300"></div>
-                    <a href="/login" class="text-gray-700 hover:text-teal-600 transition-colors">Masuk</a>
-                    <a href="/register"
+                    <a wire:navigate href="/login" class="text-gray-700 hover:text-teal-600 transition-colors">Masuk</a>
+                    <a wire:navigate href="/register"
                         class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
                         Daftar
                     </a>
@@ -60,8 +61,8 @@
                     <a href="#about"
                         class="block text-gray-700 hover:text-green-600 transition-colors py-2">Tentang</a>
                     <div class="h-px bg-gray-200 my-2"></div>
-                    <a href="/login" class="block text-gray-700 hover:text-green-600 transition-colors py-2">Masuk</a>
-                    <a href="/register"
+                    <a wire:navigate href="/login" class="block text-gray-700 hover:text-green-600 transition-colors py-2">Masuk</a>
+                    <a wire:navigate href="/register"
                         class="block bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full text-center">
                         Daftar
                     </a>
@@ -84,7 +85,7 @@
                 NutriWise membantu memahami pola konsumsi harian dan mengecek asupan gizi Anda menggunakan teknologi Machine Learning.🤖🍎
                 </p>
                 <div class="mt-8 flex gap-4">
-                    <a href="/register" class="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all shadow-md transform hover:scale-105 duration-300">
+                    <a wire:navigate href="/register" class="bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all shadow-md transform hover:scale-105 duration-300">
                     Mulai Sekarang 🍏
                     </a>
                     <a href="#features" class="group flex items-center gap-2 text-gray-600 hover:text-green-600 font-medium">
@@ -101,7 +102,7 @@
                 <div
                     class="absolute inset-0 bg-gradient-to-r from-green-200 to-teal-200 rounded-full filter blur-3xl opacity-30">
                 </div>
-                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop&auto=format" 
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop&auto=format"
                      alt="Healthy food"
                      class="relative z-10 rounded-2xl shadow-xl border-4 border-white">
             </div>
@@ -119,7 +120,7 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1: Materi Edukasi -->
-                <div data-aos="zoom-in" 
+                <div data-aos="zoom-in"
                     class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-gray-100 hover:border-indigo-200 group">
                     <div class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-green-100 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
                         <span class="text-2xl">📚</span>
@@ -128,7 +129,7 @@
                     <p class="text-gray-600 mb-6">Pelajari berbagai Pengetahuan tentang Pola konsumsi dan Gizi dengan Lengkap di sini. Dari Zero to Hero dalam Pemahaman Gizi! 🚀</p>
                     <div class="flex flex-wrap gap-2 mb-6">
                     </div>
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop"
                         alt="Materi Edukasi"
                         class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                 </div>
@@ -150,7 +151,7 @@
                         </div>
                         <p class="text-xs text-gray-500">3/4 pertanyaan terjawab</p>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop"
                         alt="Quiz Gizi"
                         class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                 </div>
@@ -177,7 +178,7 @@
                             <p class="text-xs text-gray-500">Serat</p>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&h=300&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&h=300&fit=crop"
                         alt="Simulasi Makan"
                         class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                 </div>
@@ -261,7 +262,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold">Siap Mulai? 🚀</h2>
             <p class="mt-4 text-xl text-gray-600">Gabung sekarang, gratis!</p>
-            <a href="/register"
+            <a wire:navigate href="/register"
                 class="mt-8 inline-block bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all">
                 Yuk, Mulai! ✨
             </a>
@@ -346,6 +347,7 @@
         </div>
     </footer>
 
+    @livewireScriptConfig()
     <script>
         AOS.init({
             duration: 1000,
