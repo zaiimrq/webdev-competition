@@ -86,10 +86,11 @@
                         <div class="mt-4">
                             <div class="h-2.5 w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-700">
                                 <div class="h-full rounded-full bg-gradient-to-r from-green-500 to-green-400 transition-all duration-500"
-                                    style="width: {{ ($completedQuizzes / $totalQuizzes) * 100 }}%"></div>
+                                    style="width: {{ $totalQuizzes > 0 ? ($completedQuizzes / $totalQuizzes) * 100 : 0 }}%">
+                                </div>
                             </div>
                             <p class="mt-2 text-xs text-neutral-500 text-right">
-                                {{ round(($completedQuizzes / $totalQuizzes) * 100) }}% Selesai
+                                {{ $totalQuizzes > 0 ? round(($completedQuizzes / $totalQuizzes) * 100) : 0 }}% Selesai
                             </p>
                         </div>
                     </div>
