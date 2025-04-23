@@ -110,22 +110,24 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1: Materi Edukasi -->
-                <div data-aos="zoom-in"
-                    class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-gray-100 hover:border-indigo-200 group">
-                    <div
-                        class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-green-100 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                        <span class="text-2xl">📚</span>
+                <a wire:navigate href="{{ route('education') }}">
+                    <div data-aos="zoom-in"
+                        class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-gray-100 hover:border-indigo-200 group">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-green-100 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                            <span class="text-2xl">📚</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800 group-hover:text-teal-600 transition-colors">
+                            Materi Edukasi</h3>
+                        <p class="text-gray-600 mb-6">Pelajari berbagai Pengetahuan tentang Pola konsumsi dan Gizi dengan
+                            Lengkap di sini. Dari Zero to Hero dalam Pemahaman Gizi! 🚀</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop"
+                            alt="Materi Edukasi"
+                            class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800 group-hover:text-teal-600 transition-colors">
-                        Materi Edukasi</h3>
-                    <p class="text-gray-600 mb-6">Pelajari berbagai Pengetahuan tentang Pola konsumsi dan Gizi dengan
-                        Lengkap di sini. Dari Zero to Hero dalam Pemahaman Gizi! 🚀</p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop"
-                        alt="Materi Edukasi"
-                        class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
-                </div>
+                </a>
 
                 <!-- Card 2: Quiz Gizi -->
                 <div data-aos="zoom-in" data-aos-delay="150"

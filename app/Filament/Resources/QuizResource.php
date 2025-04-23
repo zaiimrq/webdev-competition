@@ -15,11 +15,17 @@ use Illuminate\Support\Str;
 class QuizResource extends Resource
 {
     protected static ?string $model = Quiz::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+
     protected static ?string $navigationLabel = 'Quiz';
+
     protected static ?string $modelLabel = 'Quiz';
+
     protected static ?string $pluralModelLabel = 'Quiz';
+
     protected static ?string $navigationGroup = 'Manajemen Quiz';
+
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form

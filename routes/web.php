@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', [LandingPageController::class, 'index'])->name('home');
-
+Route::view('/', 'landing-page')->name('home');
+Route::view('/education', 'education')->name('education');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
@@ -26,4 +25,4 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
