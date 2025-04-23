@@ -48,6 +48,7 @@ class UserResource extends Resource
                             ->label('Peran')
                             ->options(\App\Enums\Users\Role::class)
                             ->default(\App\Enums\Users\Role::USER)
+                            ->native(false)
                             ->required(),
                     ]),
             ]);
