@@ -147,7 +147,7 @@ new
                             <div class="border-b border-zinc-200 dark:border-zinc-800 pb-6 last:border-0">
                                 <div class="mb-4">
                                     <span
-                                        class="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-full text-sm font-medium">
+                                        class="px-3 py-1 bg-green-100/80 dark:bg-green-900/30 text-green-600 dark:text-green-300 rounded-full text-sm font-medium">
                                         Pertanyaan {{ $index + 1 }}
                                     </span>
                                     <h2 class="text-xl font-semibold mt-2 text-zinc-700 dark:text-zinc-200">
@@ -158,17 +158,17 @@ new
                                     @foreach ($question->answers as $answer)
                                         <button type="button"
                                             x-on:click="answers[{{ $index }}] = '{{ $answer->id }}';
-                                                                                                                                            $wire.selectAnswer({{ $index }}, '{{ $answer->id }}')"
+                                                                                                                                                            $wire.selectAnswer({{ $index }}, '{{ $answer->id }}')"
                                             x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
-                                                                                                                                                                                                                                ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 shadow-sm'
-                                                                                                                                                                                                                                : 'bg-white dark:bg-zinc-800/50 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 border border-zinc-200 dark:border-zinc-700'"
+                                                                                                                                                                                                                                                ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 shadow-sm'
+                                                                                                                                                                                                                                                : 'bg-white dark:bg-zinc-800/50 hover:bg-green-50/50 dark:hover:bg-green-900/10 border border-zinc-200 dark:border-zinc-700'"
                                             class="group relative w-full text-left p-4 rounded-lg transition-all duration-200 ease-in-out">
                                             <div class="flex items-center justify-between">
                                                 <div class="flex items-center space-x-3">
                                                     <span
                                                         x-bind:class="answers[{{ $index }}] == '{{ $answer->id }}'
-                                                                                                                                                                                                                                    ? 'bg-blue-500/80 text-white'
-                                                                                                                                                                                                                                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/30'"
+                                                                                                                                                                                                                                                    ? 'bg-green-500/80 text-white'
+                                                                                                                                                                                                                                                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-green-100 dark:group-hover:bg-green-800/30'"
                                                         class="flex items-center justify-center w-8 h-8 rounded-full transition-colors">
                                                         {{ $loop->iteration }}
                                                     </span>
@@ -204,16 +204,16 @@ new
                         @endif
                         <button x-bind:disabled="isLoading"
                             x-on:click="isLoading = true;
-                                                                                                                              $nextTick(() => {
-                                                                                                                                  $wire.submitQuiz().then(() => {
-                                                                                                                                      isLoading = false;
-                                                                                                                                  }).catch(() => {
-                                                                                                                                      isLoading = false;
-                                                                                                                                  });
-                                                                                                                              });"
-                            class="px-8 py-3 rounded-lg bg-blue-500/90 hover:bg-blue-600/90 dark:bg-blue-600/80 dark:hover:bg-blue-700/80 text-white
-                                                                                                                           shadow-md hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 transition-all duration-200
-                                                                                                                           font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                                                                                                                                      $nextTick(() => {
+                                                                                                                                          $wire.submitQuiz().then(() => {
+                                                                                                                                              isLoading = false;
+                                                                                                                                          }).catch(() => {
+                                                                                                                                              isLoading = false;
+                                                                                                                                          });
+                                                                                                                                      });"
+                            class="px-8 py-3 rounded-lg bg-green-500/90 hover:bg-green-600/90 dark:bg-green-600/80 dark:hover:bg-green-700/80 text-white
+                                                                                                                                   shadow-md hover:shadow-green-500/10 dark:hover:shadow-green-500/5 transition-all duration-200
+                                                                                                                                   font-medium disabled:opacity-50 disabled:cursor-not-allowed">
                             <template x-if="isLoading">
                                 <svg class="animate-spin h-5 w-5 mr-2 text-white inline-block"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -239,7 +239,7 @@ new
             </p>
 
             <button wire:click="$set('isCompleted', false)"
-                class="mt-6 inline-block px-6 py-2 rounded-lg bg-blue-500/90 hover:bg-blue-600/90 dark:bg-blue-600/80 dark:hover:bg-blue-700/80 text-white font-medium shadow-md transition-all duration-200">
+                class="mt-6 inline-block px-6 py-2 rounded-lg bg-green-500/90 hover:bg-green-600/90 dark:bg-green-600/80 dark:hover:bg-green-700/80 text-white font-medium shadow-md transition-all duration-200">
                 &larr; Lihat Jawaban
             </button>
         </div>
