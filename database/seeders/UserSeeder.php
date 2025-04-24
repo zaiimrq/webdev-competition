@@ -13,15 +13,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        if (app()->environment('production')) {
+            User::create([
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin'),
+                'role' => \App\Enums\Users\Role::ADMIN,
+            ]);
+            return;
+        }
         User::factory()
             ->count(3)
             ->create();
 
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin'),
-            'role' => \App\Enums\Users\Role::ADMIN,
-        ]);
     }
 }
