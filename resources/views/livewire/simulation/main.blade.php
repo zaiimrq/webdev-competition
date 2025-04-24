@@ -8,6 +8,7 @@ new class extends Component {
     public ?int $selectedGender = null;
     public array $selectedIds = [];
     public string $message = '';
+    public bool $loading = false;
 
     public function selectMenu(string $category, int $id): void
     {
@@ -15,31 +16,54 @@ new class extends Component {
     }
 
     public function check(){
-        $sarapan = Food::find($this->selectedIds['sarapan']);
-        $makanSiang = Food::find($this->selectedIds['makan-siang']);
-        $camilan = Food::find($this->selectedIds['camilan']);
-        $makanMalam = Food::find($this->selectedIds['makan-malam']);
-        $totalCalories = $sarapan->calories + $makanSiang->calories + $camilan->calories + $makanMalam->calories;
-        $totalProtein = $sarapan->protein + $makanSiang->protein + $camilan->protein + $makanMalam->protein;
-        $totalCarbs = $sarapan->carbohydrate + $makanSiang->carbohydrate + $camilan->carbohydrate + $makanMalam->carbohydrate;
-        $totalFat = $sarapan->fat + $makanSiang->fat + $camilan->fat + $makanMalam->fat;
+        $this->loading = true;
 
-        $response = Http::post('https://api.travelkurir.com/predict', [
-            'kategori_umur' => $this->selectedCategory,
-            'jenis_kelamin' => $this->selectedGender,
-            'total_protein' => $totalProtein,
-            'total_karbohidrat' => $totalCarbs,
-            'total_lemak' => $totalFat,
-            'total_kalori' => $totalCalories,
-    ]);
+        try {
+            $sarapan = Food::find($this->selectedIds['sarapan'] ?? null);
+            $makanSiang = Food::find($this->selectedIds['makan-siang'] ?? null);
+            $camilan = Food::find($this->selectedIds['camilan'] ?? null);
+            $makanMalam = Food::find($this->selectedIds['makan-malam'] ?? null);
 
-    if($response->successful()){
-        $data = $response->json();
-        $this->message = $data['klasifikasi'];
-    } else {
-        $this->message = "Terjadi kesalahan saat memeriksa kecukupan gizi.";
+            if (!$sarapan || !$makanSiang || !$camilan || !$makanMalam) {
+                $this->message = "Mohon pilih menu untuk setiap waktu makan";
+                return;
+            }
+
+            $totalCalories = $sarapan->calories + $makanSiang->calories + $camilan->calories + $makanMalam->calories;
+            $totalProtein = $sarapan->protein + $makanSiang->protein + $camilan->protein + $makanMalam->protein;
+            $totalCarbs = $sarapan->carbohydrate + $makanSiang->carbohydrate + $camilan->carbohydrate + $makanMalam->carbohydrate;
+            $totalFat = $sarapan->fat + $makanSiang->fat + $camilan->fat + $makanMalam->fat;
+
+            $response = Http::post('https://api.travelkurir.com/predict', [
+                'kategori_umur' => $this->selectedCategory,
+                'jenis_kelamin' => $this->selectedGender,
+                'total_protein' => $totalProtein,
+                'total_karbohidrat' => $totalCarbs,
+                'total_lemak' => $totalFat,
+                'total_kalori' => $totalCalories,
+            ]);
+
+            if($response->successful()){
+                $data = $response->json();
+                $classification = $data['klasifikasi'];
+                $this->message = "Total: {$totalCalories} kal, Protein: {$totalProtein}g, Karbohidrat: {$totalCarbs}g, Lemak: {$totalFat}g\n\n";
+
+                if ($classification === 'Normal') {
+                    $this->message .= "Status: Seimbang ✅ Asupan gizi dari menu yang Anda pilih sudah ideal.";
+                } elseif ($classification === 'Berlebih') {
+                    $this->message .= "Status: Berlebih ⚠️ Pertimbangkan untuk mengurangi porsi.";
+                } else {
+                    $this->message .= "Status: Kurang ⚠️ Pertimbangkan untuk menambah porsi.";
+                }
+            } else {
+                $this->message = "Terjadi kesalahan saat memeriksa kecukupan gizi.";
+            }
+        } catch (\Exception $e) {
+            $this->message = "Terjadi kesalahan. Silakan coba lagi.";
+        } finally {
+            $this->loading = false;
+        }
     }
-}
 
     public function showGenderSelection() {
         // Return false for balita (0) and anak-anak (1), true for others
@@ -57,7 +81,18 @@ new class extends Component {
     }
 }; ?>
 
-<div>
+<div x-data="{
+    selectedMenus: {
+        sarapan: null,
+        'makan-siang': null,
+        camilan: null,
+        'makan-malam': null
+    },
+    selectMenu(category, id) {
+        this.selectedMenus[category] = id;
+        $wire.selectMenu(category, id);
+    }
+}">
     <!-- Simulasi Section -->
     <section class="py-20 bg-gradient-to-br from-green-50 to-teal-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,32 +104,32 @@ new class extends Component {
             </div>
             <div class="grid md:grid-cols-3 gap-6">
                 <button x-on:click="$wire.selectedCategory = 0"
-                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer">
                     <span class="text-4xl">👶</span> <!-- Bayi lebih mewakili balita -->
                     <h3 class="mt-4 text-lg font-semibold text-gray-800">Balita</h3>
                 </button>
                 <button x-on:click="$wire.selectedCategory = 1"
-                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer">
                     <span class="text-4xl">🧒</span> <!-- Anak laki-laki netral -->
                     <h3 class="mt-4 text-lg font-semibold text-gray-800">Anak-Anak</h3>
                 </button>
                 <button x-on:click="$wire.selectedCategory = 2"
-                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer">
                     <span class="text-4xl">👩‍🎓👨‍🎓</span> <!-- Bisa pakai kombinasi -->
                     <h3 class="mt-4 text-lg font-semibold text-gray-800">Remaja</h3>
                 </button>
                 <button x-on:click="$wire.selectedCategory = 3"
-                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer">
                     <span class="text-4xl">👩‍💼👨‍💼</span> <!-- Profesional dewasa -->
                     <h3 class="mt-4 text-lg font-semibold text-gray-800">Dewasa</h3>
                 </button>
                 <button x-on:click="$wire.selectedCategory = 4"
-                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer">
                     <span class="text-4xl">🧑‍🦳</span> <!-- Rambut mulai memutih -->
                     <h3 class="mt-4 text-lg font-semibold text-gray-800">Paruh Baya</h3>
                 </button>
                 <button x-on:click="$wire.selectedCategory = 5"
-                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center">
+                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer">
                     <span class="text-4xl">👵👴</span> <!-- Kombinasi nenek+kakek -->
                     <h3 class="mt-4 text-lg font-semibold text-gray-800">Lansia</h3>
                 </button>
@@ -132,13 +167,13 @@ new class extends Component {
                         <h4 class="text-lg font-semibold text-gray-800 mb-4">Pilih Jenis Kelamin</h4>
                         <div class="grid grid-cols-2 gap-4">
                             <button x-on:click="$wire.selectedGender = 0"
-                                class="bg-blue-50 p-4 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
+                                class="bg-blue-50 p-4 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer"
                                 :class="{ 'ring-2 ring-blue-500': $wire.selectedGender === 0 }">
                                 <span class="text-4xl">👨</span>
                                 <h5 class="mt-2 text-md font-semibold text-gray-800">Laki-Laki</h5>
                             </button>
                             <button x-on:click="$wire.selectedGender = 1"
-                                class="bg-pink-50 p-4 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
+                                class="bg-pink-50 p-4 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer"
                                 :class="{ 'ring-2 ring-pink-500': $wire.selectedGender === 1 }">
                                 <span class="text-4xl">👩</span>
                                 <h5 class="mt-2 text-md font-semibold text-gray-800">Perempuan</h5>
@@ -173,9 +208,9 @@ new class extends Component {
                     <div class="grid md:grid-cols-3 gap-6">
 
                             @foreach ($sarapan as $menu)
-                                <button wire:click="selectMenu('sarapan', {{ $menu->id }})"
-                                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
-                                    :class="{ 'ring-2 ring-teal-500': $wire.selectedIds['sarapan'] === {{ $menu->id }} }">
+                                <button @click="selectMenu('sarapan', {{ $menu->id }})"
+                                    class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer"
+                                    :class="{ 'ring-2 ring-teal-500': selectedMenus.sarapan === {{ $menu->id }} }">
                                     <img src="{{ $menu->image_url }}"
                                         alt="{{ $menu->name }}" class="w-full h-50 object-cover rounded-md mb-4">
                                     <h4 class="text-lg font-semibold text-gray-800">{{ $menu->name }}</h4>
@@ -192,9 +227,9 @@ new class extends Component {
                         Pilih menu makan siang yang bikin kenyang dan tetap ringan di perut.</p>
                     <div class="grid md:grid-cols-3 gap-6">
                         @foreach ($makanSiang as $menu)
-                        <button wire:click="selectMenu('makan-siang', {{ $menu->id }})"
-                            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
-                            :class="{ 'ring-2 ring-teal-500': $wire.selectedIds['makan-siang'] === {{ $menu->id }} }">
+                        <button @click="selectMenu('makan-siang', {{ $menu->id }})"
+                            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer"
+                            :class="{ 'ring-2 ring-teal-500': selectedMenus['makan-siang'] === {{ $menu->id }} }">
                             <img src="{{ $menu->image_url }}"
                                 alt="{{ $menu->name }}" class="w-full h-50 object-cover rounded-md mb-4">
                             <h4 class="text-lg font-semibold text-gray-800">{{ $menu->name }}</h4>
@@ -211,9 +246,9 @@ new class extends Component {
                         stabil.</p>
                     <div class="grid md:grid-cols-3 gap-6">
                         @foreach($camilan as $menu)
-                        <button wire:click="selectMenu('camilan', {{ $menu->id }})"
-                            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
-                            :class="{ 'ring-2 ring-teal-500': $wire.selectedIds['camilan'] === {{ $menu->id }} }">
+                        <button @click="selectMenu('camilan', {{ $menu->id }})"
+                            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer"
+                            :class="{ 'ring-2 ring-teal-500': selectedMenus.camilan === {{ $menu->id }} }">
                             <img src="{{ $menu->image_url }}"
                                 alt="{{ $menu->name }}" class="w-full h-50 object-cover rounded-md mb-4">
                             <h4 class="text-lg font-semibold text-gray-800">{{ $menu->name }}</h4>
@@ -230,9 +265,9 @@ new class extends Component {
                         Pilih menu makan malam yang membuatmu tidur nyenyak dan bangun besok dalam kondisi prima.</p>
                     <div class="grid md:grid-cols-3 gap-6">
                         @foreach ($makanMalam as $menu)
-                        <button wire:click="selectMenu('makan-malam', {{ $menu->id }})"
-                            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
-                            :class="{ 'ring-2 ring-teal-500': $wire.selectedIds['makan-malam'] === {{ $menu->id }} }">
+                        <button @click="selectMenu('makan-malam', {{ $menu->id }})"
+                            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center cursor-pointer"
+                            :class="{ 'ring-2 ring-teal-500': selectedMenus['makan-malam'] === {{ $menu->id }} }">
                             <img src="{{ $menu->image_url }}"
                                 alt="{{ $menu->name }}" class="w-full h-50 object-cover rounded-md mb-4">
                             <h4 class="text-lg font-semibold text-gray-800">{{ $menu->name }}</h4>
@@ -245,10 +280,31 @@ new class extends Component {
 
             <!-- Tombol Cek Kecukupan Gizi -->
             <div class="text-center mt-12">
-                <p class="text-gray-600 mb-4" x-text="$wire.message"></p>
+                @if($message)
+                    <div x-show="$wire.message"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 transform translate-y-2"
+                         x-transition:enter-end="opacity-100 transform translate-y-0"
+                         x-transition:leave="transition ease-in duration-300"
+                         x-transition:leave-start="opacity-100 transform translate-y-0"
+                         x-transition:leave-end="opacity-0 transform translate-y-2"
+                         class="max-w-2xl mx-auto mb-8 bg-white/50 backdrop-blur-sm border border-teal-100 rounded-xl p-6 shadow-sm">
+                        <p class="text-gray-700 text-lg font-medium">{{ $message }}</p>
+                    </div>
+                @endif
+
                 <button wire:click="check"
-                    class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all">
-                    Cek Kecukupan Gizi
+                        wire:loading.attr="disabled"
+                        wire:target="check"
+                        class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed inline-flex items-center gap-3">
+                    <span wire:loading wire:target="check"  >
+                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </span>
+                    <span wire:loading.remove wire:target="check" >Cek Kecukupan Gizi</span>
+                    <span wire:loading wire:target="check" class="hidden">Memeriksa...</span>
                 </button>
             </div>
         </div>
