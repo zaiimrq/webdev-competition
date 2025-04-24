@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('fat');
             $table->float('calories');
             $table->string('category');
+            $table->string('image_url');
             $table->timestamps();
         });
     }

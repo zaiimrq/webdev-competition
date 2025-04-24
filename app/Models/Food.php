@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\Foods\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 
 class Food extends Model
 {
@@ -12,13 +15,39 @@ class Food extends Model
         'carbohydrates',
         'fat',
         'calories',
-        'category'
+        'category',
+        'image_url'
     ];
 
     protected function casts(): array
     {
         return [
-            'category' => \App\Enums\Foods\Category::class
+            'category' => Category::class
         ];
+    }
+
+    #[Scope]
+    public function sarapan(Builder $builder): void
+    {
+        $builder->whereCategory(Category::SARAPAN);
+    }
+
+    #[Scope]
+    public function makanSiang(Builder $builder): void
+    {
+
+        $builder->whereCategory(Category::MAKAN_SIANG);
+    }
+
+    #[Scope]
+    public function makanMalam(Builder $builder): void
+    {
+        $builder->whereCategory(Category::MAKAN_MALAM);
+    }
+
+    #[Scope]
+    public function camilan(Builder $builder): void
+    {
+        $builder->whereCategory(Category::CAMILAN);
     }
 }
