@@ -14,6 +14,7 @@
                     <a href="#features" class="text-gray-700 hover:text-teal-600 transition-colors">Fitur</a>
                     <a href="#benefits" class="text-gray-700 hover:text-teal-600 transition-colors">Keuntungan</a>
                     <a href="#about" class="text-gray-700 hover:text-teal-600 transition-colors">Tentang</a>
+                    <a wire:navigate href="/team" class="text-gray-700 hover:text-teal-600 transition-colors">Tim</a>
                     <div class="h-5 w-px bg-gray-300"></div>
                     <a wire:navigate href="/login" class="text-gray-700 hover:text-teal-600 transition-colors">Masuk</a>
                     <a wire:navigate href="/register"
@@ -45,6 +46,8 @@
                     <a href="#benefits"
                         class="block text-gray-700 hover:text-green-600 transition-colors py-2">Keuntungan</a>
                     <a href="#about" class="block text-gray-700 hover:text-green-600 transition-colors py-2">Tentang</a>
+                    <a wire:navigate href="/team"
+                        class="block text-gray-700 hover:text-green-600 transition-colors py-2">Tim</a>
                     <div class="h-px bg-gray-200 my-2"></div>
                     <a wire:navigate href="/login"
                         class="block text-gray-700 hover:text-green-600 transition-colors py-2">Masuk</a>
@@ -93,8 +96,8 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-green-200 to-teal-200 rounded-full filter blur-3xl opacity-30">
                     </div>
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop&auto=format"
-                        alt="Healthy food" class="relative z-10 rounded-2xl shadow-xl border-4 border-white">
+                    <img src="https://picsum.photos/seed/healthy1/600/400" alt="Healthy food"
+                        class="relative z-10 rounded-2xl shadow-xl border-4 border-white">
                 </div>
             </div>
         </div>
@@ -117,14 +120,15 @@
                             class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-green-100 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
                             <span class="text-2xl">📚</span>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800 group-hover:text-teal-600 transition-colors">
+                        <h3
+                            class="text-xl font-semibold mb-4 text-gray-800 group-hover:text-teal-600 transition-colors">
                             Materi Edukasi</h3>
-                        <p class="text-gray-600 mb-6">Pelajari berbagai Pengetahuan tentang Pola konsumsi dan Gizi dengan
+                        <p class="text-gray-600 mb-6">Pelajari berbagai Pengetahuan tentang Pola konsumsi dan Gizi
+                            dengan
                             Lengkap di sini. Dari Zero to Hero dalam Pemahaman Gizi! 🚀</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                         </div>
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop"
-                            alt="Materi Edukasi"
+                        <img src="https://picsum.photos/seed/education1/400/300" alt="Materi Edukasi"
                             class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                     </div>
                 </a>
@@ -149,8 +153,8 @@
                         </div>
                         <p class="text-xs text-gray-500">3/4 pertanyaan terjawab</p>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop"
-                        alt="Quiz Gizi" class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
+                    <img src="https://picsum.photos/seed/quiz1/400/300" alt="Quiz Gizi"
+                        class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                 </div>
 
                 <!-- Card 3: Simulasi & Prediksi -->
@@ -178,8 +182,7 @@
                             <p class="text-xs text-gray-500">Serat</p>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&h=300&fit=crop"
-                        alt="Simulasi Makan"
+                    <img src="https://picsum.photos/seed/simulation1/400/300" alt="Simulasi Makan"
                         class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                 </div>
             </div>
@@ -195,15 +198,14 @@
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div data-aos="fade-right" class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400"
-                        alt="Benefits" class="w-full mb-8 rounded-xl">
+                    <img src="https://picsum.photos/seed/benefits1/600/400" alt="Benefits"
+                        class="w-full mb-8 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4">Mengetahui Pola Konsumsi & Gizi</h3>
                     <p class="text-gray-600">Ketahui informasi tentang pola konsumsi makanan dan kandungan gizi yang
                         kamu konsumsi setiap hari.</p>
                 </div>
                 <div data-aos="fade-left" class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="Mobile"
-                        class="w-full mb-8 rounded-xl">
+                    <img src="https://picsum.photos/seed/benefits2/600/400" alt="Mobile" class="w-full mb-8 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4">Prediksi AKG Harian</h3>
                     <p class="text-gray-600">Prediksi kebutuhan asupan gizimu setiap hari berdasarkan pilihan isi
                         piringmu.</p>
@@ -254,14 +256,10 @@
                     </div>
                 </div>
                 <div data-aos="fade-left" class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
-                        alt="Healthy Food" class="rounded-xl">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
-                        alt="Tech" class="rounded-xl">
-                    <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
-                        alt="Nutrition Analysis" class="rounded-xl">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=500"
-                        alt="Daily Diet" class="rounded-xl">
+                    <img src="https://picsum.photos/seed/about1/500/500" alt="Healthy Food" class="rounded-xl">
+                    <img src="https://picsum.photos/seed/about2/500/500" alt="Tech" class="rounded-xl">
+                    <img src="https://picsum.photos/seed/about3/500/500" alt="Nutrition Analysis" class="rounded-xl">
+                    <img src="https://picsum.photos/seed/about4/500/500" alt="Daily Diet" class="rounded-xl">
                 </div>
             </div>
         </div>

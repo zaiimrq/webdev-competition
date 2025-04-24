@@ -7,6 +7,7 @@ use Livewire\Volt\Volt;
 
 Route::view('/', 'landing-page')->name('home');
 Route::view('/education', 'education')->name('education');
+Route::view('/team', 'team')->name('team');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
