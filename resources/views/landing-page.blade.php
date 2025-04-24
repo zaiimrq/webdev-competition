@@ -5,9 +5,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <h1
-                        class="text-2xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
-                        NutriWise</h1>
+                    <x-app-logo />
                 </div>
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-6">
