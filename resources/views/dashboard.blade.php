@@ -174,23 +174,22 @@
                     class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
                     <h3 class="mb-6 text-lg font-semibold text-neutral-900 dark:text-white">Quiz Mendatang</h3>
                     <div class="space-y-4">
-                        @if($remainingQuizzes > 0)
-                            @foreach(range(1, min(2, $remainingQuizzes)) as $i)
-                                <div
-                                    class="rounded-xl border border-neutral-100 bg-neutral-50/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-sm dark:border-neutral-700 dark:bg-neutral-800/50 dark:hover:bg-neutral-800">
-                                    <div class="mb-2 flex items-center justify-between">
-                                        <h4 class="font-medium text-neutral-900 dark:text-white">Quiz #{{ $i }}</h4>
-                                        <span
-                                            class="rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Tersedia</span>
-                                    </div>
-                                    <p class="text-sm text-neutral-500">Dimulai {{ now()->addDays($i)->diffForHumans() }}</p>
+                        @forelse($upcomingQuizzes as $quiz)
+                            <div
+                                class="rounded-xl border border-neutral-100 bg-neutral-50/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-sm dark:border-neutral-700 dark:bg-neutral-800/50 dark:hover:bg-neutral-800">
+                                <div class="mb-2 flex items-center justify-between">
+                                    <h4 class="font-medium text-neutral-900 dark:text-white">{{ $quiz->name }}</h4>
+                                    <span
+                                        class="rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Tersedia</span>
                                 </div>
-                            @endforeach
-                        @else
+                                <p class="text-sm text-neutral-500">{{ $quiz->description ?? 'Quiz baru akan tersedia' }}
+                                </p>
+                            </div>
+                        @empty
                             <div class="text-center py-4">
                                 <p class="text-neutral-500 dark:text-neutral-400">Semua quiz telah diselesaikan</p>
                             </div>
-                        @endif
+                        @endforelse
                     </div>
                 </div>
             </div>

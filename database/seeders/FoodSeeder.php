@@ -19,7 +19,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 80.9,
                 'calories' => 950,
                 'category' => Category::SARAPAN,
-                'image_url' =>'https://i.pinimg.com/736x/c4/e2/77/c4e277695c70c3de673062e9b800a837.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/c4/e2/77/c4e277695c70c3de673062e9b800a837.jpg',
             ],
             [
                 'name' => 'Bubur Ayam, Teh Manis dan Telur Rebus',
@@ -28,7 +28,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 55.3,
                 'calories' => 420,
                 'category' => Category::SARAPAN,
-                'image_url' => 'https://i.pinimg.com/736x/f7/71/c2/f771c22052372f6166484d2ed79dd6f8.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/f7/71/c2/f771c22052372f6166484d2ed79dd6f8.jpg',
 
             ],
             [
@@ -38,7 +38,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 48.5,
                 'calories' => 600,
                 'category' => Category::SARAPAN,
-                'image_url' => 'https://i.pinimg.com/736x/2f/93/85/2f9385b711c5a30cd4fe606d7a0d09e0.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/2f/93/85/2f9385b711c5a30cd4fe606d7a0d09e0.jpg',
             ],
 
             // Set Menu Camilan
@@ -49,7 +49,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 53.0,
                 'calories' => 300,
                 'category' => Category::CAMILAN,
-                'image_url' => 'https://i.pinimg.com/736x/6a/e1/ae/6ae1ae321b9aa043aa28d7985b2173f7.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/6a/e1/ae/6ae1ae321b9aa043aa28d7985b2173f7.jpg',
             ],
             [
                 'name' => 'Roti Gandum, Telur dan Alpukat',
@@ -58,7 +58,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 38.0,
                 'calories' => 280,
                 'category' => Category::CAMILAN,
-                'image_url' => 'https://i.pinimg.com/736x/65/84/ef/6584efcc07dacd2b2a2840123b3fadac.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/65/84/ef/6584efcc07dacd2b2a2840123b3fadac.jpg',
 
             ],
             [
@@ -68,7 +68,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 45.0,
                 'calories' => 350,
                 'category' => Category::CAMILAN,
-                'image_url' => 'https://i.pinimg.com/736x/7b/74/c8/7b74c873818b4a270d0cff66c7e79efd.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/7b/74/c8/7b74c873818b4a270d0cff66c7e79efd.jpg',
             ],
 
             // Set Menu Makan Siang
@@ -79,7 +79,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 78.0,
                 'calories' => 550,
                 'category' => Category::MAKAN_SIANG,
-                'image_url' => 'https://i.pinimg.com/736x/cb/e7/47/cbe747ab93036eab0b36c2e4a22818d3.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/cb/e7/47/cbe747ab93036eab0b36c2e4a22818d3.jpg',
             ],
             [
                 'name' => 'Nasi, Rendang Sapi dan Tumis Sayur',
@@ -88,7 +88,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 72.5,
                 'calories' => 500,
                 'category' => Category::MAKAN_SIANG,
-                'image_url' => 'https://i.pinimg.com/736x/ca/60/05/ca600539b94a1c4948e984bc7cdb9694.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/ca/60/05/ca600539b94a1c4948e984bc7cdb9694.jpg',
             ],
             [
                 'name' => 'Siomay dan Teh Manis',
@@ -97,7 +97,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 55.8,
                 'calories' => 350,
                 'category' => Category::MAKAN_SIANG,
-                'image_url' => 'https://i.pinimg.com/736x/6a/e1/ae/6ae1ae321b9aa043aa28d7985b2173f7.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/6a/e1/ae/6ae1ae321b9aa043aa28d7985b2173f7.jpg',
             ],
 
             // Set Menu Makan Malam
@@ -108,7 +108,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 72.2,
                 'calories' => 500,
                 'category' => Category::MAKAN_MALAM,
-                'image_url' => 'https://i.pinimg.com/736x/11/65/bf/1165bf2c308c1bba5ef9eaf3f306de6e.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/11/65/bf/1165bf2c308c1bba5ef9eaf3f306de6e.jpg',
 
             ],
             [
@@ -118,7 +118,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 98.0,
                 'calories' => 800,
                 'category' => Category::MAKAN_MALAM,
-                'image_url' => 'https://i.pinimg.com/736x/0a/2d/11/0a2d111aa30a41cb089d497263e60a01.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/0a/2d/11/0a2d111aa30a41cb089d497263e60a01.jpg',
             ],
             [
                 'name' => 'Sate Ayam dan Lontong',
@@ -127,7 +127,7 @@ class FoodSeeder extends Seeder
                 'carbohydrate' => 60.3,
                 'calories' => 500,
                 'category' => Category::MAKAN_MALAM,
-                'image_url' => 'https://i.pinimg.com/736x/c7/d9/50/c7d95079b6b25bd9caf164133289afad.jpg'
+                'image_url' => 'https://i.pinimg.com/736x/c7/d9/50/c7d95079b6b25bd9caf164133289afad.jpg',
             ],
         ];
 

@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('admin'),
                 'role' => \App\Enums\Users\Role::ADMIN,
             ]);
+
             return;
         }
         User::factory()

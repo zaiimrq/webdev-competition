@@ -24,6 +24,13 @@ class DashboardController extends Controller
         $completedQuizzes = $completedQuizIds->count();
         $remainingQuizzes = $totalQuizzes - $completedQuizzes;
 
+        // Get upcoming quizzes that don't have questions yet
+        $upcomingQuizzes = Quiz::whereDoesntHave('questions')
+            ->whereNotIn('id', $completedQuizIds)
+            ->latest()
+            ->take(2)
+            ->get();
+
         // Calculate average score for completed quizzes
         $averageScore = UserAnswer::where('user_id', $userId)
             ->whereIn('quiz_id', $completedQuizIds)
@@ -77,6 +84,7 @@ class DashboardController extends Controller
             'totalQuizzes' => $totalQuizzes,
             'averageScore' => round($averageScore, 1),
             'remainingQuizzes' => $remainingQuizzes,
+            'upcomingQuizzes' => $upcomingQuizzes,
             'passedQuizzes' => $passedQuizzes,
             'failedQuizzes' => $failedQuizzes,
             'quizDates' => $quizHistory->pluck('date')->toArray(),

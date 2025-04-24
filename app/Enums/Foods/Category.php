@@ -2,7 +2,6 @@
 
 namespace App\Enums\Foods;
 
-
 enum Category: string
 {
     case SARAPAN = 'sarapan';

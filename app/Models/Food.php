@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Enums\Foods\Category;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
@@ -16,13 +16,13 @@ class Food extends Model
         'fat',
         'calories',
         'category',
-        'image_url'
+        'image_url',
     ];
 
     protected function casts(): array
     {
         return [
-            'category' => Category::class
+            'category' => Category::class,
         ];
     }
 
