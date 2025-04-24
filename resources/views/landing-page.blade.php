@@ -14,11 +14,18 @@
                     <a href="#about" class="text-gray-700 hover:text-teal-600 transition-colors">Tentang</a>
                     <a wire:navigate href="/team" class="text-gray-700 hover:text-teal-600 transition-colors">Tim</a>
                     <div class="h-5 w-px bg-gray-300"></div>
-                    <a wire:navigate href="/login" class="text-gray-700 hover:text-teal-600 transition-colors">Masuk</a>
-                    <a wire:navigate href="/register"
-                        class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
-                        Daftar
-                    </a>
+                    @guest
+                        <a wire:navigate href="/login" class="text-gray-700 hover:text-teal-600 transition-colors">Masuk</a>
+                        <a wire:navigate href="/register"
+                            class="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+                            Daftar
+                        </a>
+                    @endguest
+                    @auth
+                        <a wire:navigate href="{{ route('dashboard') }}" class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 text-white hover:shadow-lg transition-all">
+                            <span class="font-medium">{{ auth()->user()->initials() }}</span>
+                        </a>
+                    @endauth
                 </div>
                 <!-- Mobile menu button -->
                 <div class="flex items-center md:hidden">
@@ -47,12 +54,21 @@
                     <a wire:navigate href="/team"
                         class="block text-gray-700 hover:text-green-600 transition-colors py-2">Tim</a>
                     <div class="h-px bg-gray-200 my-2"></div>
-                    <a wire:navigate href="/login"
-                        class="block text-gray-700 hover:text-green-600 transition-colors py-2">Masuk</a>
-                    <a wire:navigate href="/register"
-                        class="block bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full text-center">
-                        Daftar
-                    </a>
+                    @guest
+                        <a wire:navigate href="/login"
+                            class="block text-gray-700 hover:text-green-600 transition-colors py-2">Masuk</a>
+                        <a wire:navigate href="/register"
+                            class="block bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full text-center">
+                            Daftar
+                        </a>
+                    @endguest
+                    @auth
+
+                        <a wire:navigate href="{{ route('dashboard') }}"
+                            class="block bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-2 rounded-full text-center">
+                            Dashboard
+                        </a>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -132,28 +148,32 @@
                 </a>
 
                 <!-- Card 2: Quiz Gizi -->
-                <div data-aos="zoom-in" data-aos-delay="150"
-                    class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-gray-100 hover:border-teal-200 group">
-                    <div
-                        class="w-14 h-14 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                        <span class="text-2xl">✏️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800 group-hover:text-teal-600 transition-colors">
-                        Quiz Gizi</h3>
-                    <p class="text-gray-600 mb-6">Belajar gizi jadi seru! 🧠 Selesaikan Quiz Gizi dan Raih posisi
-                        teratas di Leaderboard! 🏆</p>
-                    <div class="mb-6">
-                        <div class="flex items-center mb-2">
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-teal-600 h-2.5 rounded-full" style="width: 75%"></div>
-                            </div>
-                            <span class="ml-2 text-sm text-gray-500">75% lengkap</span>
+                <a wire:navigate href="{{ route('quizzes') }}">
+
+                    <div data-aos="zoom-in" data-aos-delay="150"
+                        class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-gray-100 hover:border-teal-200 group">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                            <span class="text-2xl">✏️</span>
                         </div>
-                        <p class="text-xs text-gray-500">3/4 pertanyaan terjawab</p>
+                        <h3
+                            class="text-xl font-semibold mb-4 text-gray-800 group-hover:text-teal-600 transition-colors">
+                            Quiz Gizi</h3>
+                        <p class="text-gray-600 mb-6">Belajar gizi jadi seru! 🧠 Selesaikan Quiz Gizi dan Raih posisi
+                            teratas di Leaderboard! 🏆</p>
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-teal-600 h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <span class="ml-2 text-sm text-gray-500">75% lengkap</span>
+                            </div>
+                            <p class="text-xs text-gray-500">3/4 pertanyaan terjawab</p>
+                        </div>
+                        <img src="https://picsum.photos/seed/quiz1/400/300" alt="Quiz Gizi"
+                            class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
                     </div>
-                    <img src="https://picsum.photos/seed/quiz1/400/300" alt="Quiz Gizi"
-                        class="w-full rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
-                </div>
+                </a>
 
                 <!-- Card 3: Simulasi & Prediksi -->
                 <div data-aos="zoom-in" data-aos-delay="300"
@@ -188,7 +208,7 @@
     </section>
 
     <!-- Benefits Section (New) -->
-    <section class="py-20 bg-gradient-to-br from-green-100 to-teal-100">
+    <section id="benefits" class="py-20 bg-gradient-to-br from-green-100 to-teal-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="px-4 py-2 rounded-full bg-green-100 text-green-600 text-sm font-medium">Keuntungan</span>
