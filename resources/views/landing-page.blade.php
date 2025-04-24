@@ -154,6 +154,7 @@
                 </div>
 
                 <!-- Card 3: Simulasi & Prediksi -->
+                <a wire:navigate href="{{ route('simulation') }}">
                 <div data-aos="zoom-in" data-aos-delay="300"
                     class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-gray-100 hover:border-green-200 group">
                     <div
