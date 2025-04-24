@@ -1,13 +1,305 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-sBPdzi5F.css",
+    "file": "assets/app-DzpHQeQ5.css",
     "src": "resources/css/app.css",
     "isEntry": true
+  },
+  "resources/img/Blue and White Galaxy Illustrative Astronaut Note Card.png": {
+    "file": "assets/Blue and White Galaxy Illustrative Astronaut Note Card-BH7TZWs5.png",
+    "src": "resources/img/Blue and White Galaxy Illustrative Astronaut Note Card.png"
+  },
+  "resources/img/GPS.webp": {
+    "file": "assets/GPS-HQyLHfik.webp",
+    "src": "resources/img/GPS.webp"
+  },
+  "resources/img/HST-SM4.jpeg": {
+    "file": "assets/HST-SM4-BJ1T0Sxg.jpeg",
+    "src": "resources/img/HST-SM4.jpeg"
+  },
+  "resources/img/amstrong.png": {
+    "file": "assets/amstrong-Dgl-fNPQ.png",
+    "src": "resources/img/amstrong.png"
+  },
+  "resources/img/aurora.jpg": {
+    "file": "assets/aurora-BmNPspPw.jpg",
+    "src": "resources/img/aurora.jpg"
+  },
+  "resources/img/badai matahari.jpg": {
+    "file": "assets/badai matahari-CEpV7KEx.jpg",
+    "src": "resources/img/badai matahari.jpg"
+  },
+  "resources/img/bg.jpeg": {
+    "file": "assets/bg-LPXZG1yP.jpeg",
+    "src": "resources/img/bg.jpeg"
+  },
+  "resources/img/bg2.jpeg": {
+    "file": "assets/bg2-CssO8VrO.jpeg",
+    "src": "resources/img/bg2.jpeg"
+  },
+  "resources/img/bg3.jpeg": {
+    "file": "assets/bg3-CpLoweTH.jpeg",
+    "src": "resources/img/bg3.jpeg"
+  },
+  "resources/img/bintangkembar.png": {
+    "file": "assets/bintangkembar-fgAfVam-.png",
+    "src": "resources/img/bintangkembar.png"
+  },
+  "resources/img/black hole.jpg": {
+    "file": "assets/black hole-CWAWxOdZ.jpg",
+    "src": "resources/img/black hole.jpg"
+  },
+  "resources/img/eksoplanet.jpg": {
+    "file": "assets/eksoplanet-BZt6sRTh.jpg",
+    "src": "resources/img/eksoplanet.jpg"
+  },
+  "resources/img/fail.mp3": {
+    "file": "assets/fail-CRbkiEyI.mp3",
+    "src": "resources/img/fail.mp3"
+  },
+  "resources/img/fenomena.jpg": {
+    "file": "assets/fenomena-KScWDpAH.jpg",
+    "src": "resources/img/fenomena.jpg"
+  },
+  "resources/img/galaksi spiral.jpg": {
+    "file": "assets/galaksi spiral-BTFBzgGz.jpg",
+    "src": "resources/img/galaksi spiral.jpg"
+  },
+  "resources/img/gambar p.jpg": {
+    "file": "assets/gambar p-CoPt5P1D.jpg",
+    "src": "resources/img/gambar p.jpg"
+  },
+  "resources/img/gambar p2.jpg": {
+    "file": "assets/gambar p2-CsivUDeq.jpg",
+    "src": "resources/img/gambar p2.jpg"
+  },
+  "resources/img/gambar p3.jpg": {
+    "file": "assets/gambar p3-9w20po9S.jpg",
+    "src": "resources/img/gambar p3.jpg"
+  },
+  "resources/img/gambar p4.jpg": {
+    "file": "assets/gambar p4-D_-Udr_W.jpg",
+    "src": "resources/img/gambar p4.jpg"
+  },
+  "resources/img/goodsound.mp3": {
+    "file": "assets/goodsound-Cotk5nk8.mp3",
+    "src": "resources/img/goodsound.mp3"
+  },
+  "resources/img/jupiter.svg": {
+    "file": "assets/jupiter-wJqyoNz9.svg",
+    "src": "resources/img/jupiter.svg"
+  },
+  "resources/img/matahari.svg": {
+    "file": "assets/matahari-CT2i1yDH.svg",
+    "src": "resources/img/matahari.svg"
+  },
+  "resources/img/meteor.svg": {
+    "file": "assets/meteor-DLN-4j5y.svg",
+    "src": "resources/img/meteor.svg"
+  },
+  "resources/img/meteorid.png": {
+    "file": "assets/meteorid-BpWuUL9C.png",
+    "src": "resources/img/meteorid.png"
+  },
+  "resources/img/misi bulan.jpg": {
+    "file": "assets/misi bulan-Dco0_EQ-.jpg",
+    "src": "resources/img/misi bulan.jpg"
+  },
+  "resources/img/misi bulan2.jpg": {
+    "file": "assets/misi bulan2-D-aKtlxC.jpg",
+    "src": "resources/img/misi bulan2.jpg"
+  },
+  "resources/img/nebula.jpg": {
+    "file": "assets/nebula-BJFMK1IU.jpg",
+    "src": "resources/img/nebula.jpg"
+  },
+  "resources/img/pasangsurut.jpg": {
+    "file": "assets/pasangsurut-CUORQGx7.jpg",
+    "src": "resources/img/pasangsurut.jpg"
+  },
+  "resources/img/pembentukan-planet.jpg": {
+    "file": "assets/pembentukan-planet-BJJcCFC_.jpg",
+    "src": "resources/img/pembentukan-planet.jpg"
+  },
+  "resources/img/planet.svg": {
+    "file": "assets/planet-CLn0FXU_.svg",
+    "src": "resources/img/planet.svg"
+  },
+  "resources/img/planetdalamdanluar.png": {
+    "file": "assets/planetdalamdanluar-BNwgGHuj.png",
+    "src": "resources/img/planetdalamdanluar.png"
+  },
+  "resources/img/planetesimal.jpg": {
+    "file": "assets/planetesimal-C6sGfRvL.jpg",
+    "src": "resources/img/planetesimal.jpg"
+  },
+  "resources/img/png/astro.png": {
+    "file": "assets/astro-3fHDIthr.png",
+    "src": "resources/img/png/astro.png"
+  },
+  "resources/img/png/astro2.png": {
+    "file": "assets/astro2-DM7ccyZJ.png",
+    "src": "resources/img/png/astro2.png"
+  },
+  "resources/img/png/astrobendera.png": {
+    "file": "assets/astrobendera-UAxDX8-P.png",
+    "src": "resources/img/png/astrobendera.png"
+  },
+  "resources/img/png/astrobulan.png": {
+    "file": "assets/astrobulan-Bq6KgwnK.png",
+    "src": "resources/img/png/astrobulan.png"
+  },
+  "resources/img/png/bulan.png": {
+    "file": "assets/bulan-BcgjpC-K.png",
+    "src": "resources/img/png/bulan.png"
+  },
+  "resources/img/png/bumi satelit.png": {
+    "file": "assets/bumi satelit-B9Cyaiq2.png",
+    "src": "resources/img/png/bumi satelit.png"
+  },
+  "resources/img/png/bumi.png": {
+    "file": "assets/bumi-RztvAbAI.png",
+    "src": "resources/img/png/bumi.png"
+  },
+  "resources/img/png/jupiter.png": {
+    "file": "assets/jupiter-ONEwQ1kh.png",
+    "src": "resources/img/png/jupiter.png"
+  },
+  "resources/img/png/mars.png": {
+    "file": "assets/mars-DzA8sEc6.png",
+    "src": "resources/img/png/mars.png"
+  },
+  "resources/img/png/matahari.png": {
+    "file": "assets/matahari-DoivB6Mn.png",
+    "src": "resources/img/png/matahari.png"
+  },
+  "resources/img/png/merkurius.png": {
+    "file": "assets/merkurius-CtN3vV8j.png",
+    "src": "resources/img/png/merkurius.png"
+  },
+  "resources/img/png/meteor.png": {
+    "file": "assets/meteor-BpjjVqyf.png",
+    "src": "resources/img/png/meteor.png"
+  },
+  "resources/img/png/neptunus.png": {
+    "file": "assets/neptunus-k5I0qoUj.png",
+    "src": "resources/img/png/neptunus.png"
+  },
+  "resources/img/png/planet.png": {
+    "file": "assets/planet-1zc4W3zq.png",
+    "src": "resources/img/png/planet.png"
+  },
+  "resources/img/png/roket.png": {
+    "file": "assets/roket-KJIWk4tm.png",
+    "src": "resources/img/png/roket.png"
+  },
+  "resources/img/png/roketastro.png": {
+    "file": "assets/roketastro-4lCO7_a9.png",
+    "src": "resources/img/png/roketastro.png"
+  },
+  "resources/img/png/roketduduk.png": {
+    "file": "assets/roketduduk-BIjBLb3z.png",
+    "src": "resources/img/png/roketduduk.png"
+  },
+  "resources/img/png/satelit.png": {
+    "file": "assets/satelit-BScsVlRq.png",
+    "src": "resources/img/png/satelit.png"
+  },
+  "resources/img/png/saturnus.png": {
+    "file": "assets/saturnus-3yXS1Nxv.png",
+    "src": "resources/img/png/saturnus.png"
+  },
+  "resources/img/png/uranus.png": {
+    "file": "assets/uranus-CRJU2am7.png",
+    "src": "resources/img/png/uranus.png"
+  },
+  "resources/img/png/venus.png": {
+    "file": "assets/venus-DAv2FsxO.png",
+    "src": "resources/img/png/venus.png"
+  },
+  "resources/img/protoplanet.png": {
+    "file": "assets/protoplanet-CJaFNpBa.png",
+    "src": "resources/img/protoplanet.png"
+  },
+  "resources/img/pulsar.jpg": {
+    "file": "assets/pulsar--BFpipLk.jpg",
+    "src": "resources/img/pulsar.jpg"
+  },
+  "resources/img/quasar.jpg": {
+    "file": "assets/quasar-vpjzIMSA.jpg",
+    "src": "resources/img/quasar.jpg"
+  },
+  "resources/img/rocket.png": {
+    "file": "assets/rocket-urBtYBWR.png",
+    "src": "resources/img/rocket.png"
+  },
+  "resources/img/roket.svg": {
+    "file": "assets/roket-B13qxwyA.svg",
+    "src": "resources/img/roket.svg"
+  },
+  "resources/img/roketastro.svg": {
+    "file": "assets/roketastro-C6ka6H-J.svg",
+    "src": "resources/img/roketastro.svg"
+  },
+  "resources/img/roketduduk.svg": {
+    "file": "assets/roketduduk-BFCiyX0b.svg",
+    "src": "resources/img/roketduduk.svg"
+  },
+  "resources/img/satelit.mp4": {
+    "file": "assets/satelit-Doc5Np_b.mp4",
+    "src": "resources/img/satelit.mp4"
+  },
+  "resources/img/satelit.svg": {
+    "file": "assets/satelit-DKH-ChaQ.svg",
+    "src": "resources/img/satelit.svg"
+  },
+  "resources/img/select.mp3": {
+    "file": "assets/select-BhlDfkFB.mp3",
+    "src": "resources/img/select.mp3"
+  },
+  "resources/img/select2.mp3": {
+    "file": "assets/select2-CiRdI_7I.mp3",
+    "src": "resources/img/select2.mp3"
+  },
+  "resources/img/select3.mp3": {
+    "file": "assets/select3-B40zvPlr.mp3",
+    "src": "resources/img/select3.mp3"
+  },
+  "resources/img/space.mp3": {
+    "file": "assets/space-Bi3-Mzs9.mp3",
+    "src": "resources/img/space.mp3"
+  },
+  "resources/img/stars.png": {
+    "file": "assets/stars-nHwBGzvP.png",
+    "src": "resources/img/stars.png"
+  },
+  "resources/img/supernova.jpg": {
+    "file": "assets/supernova-BDCARH9x.jpg",
+    "src": "resources/img/supernova.jpg"
+  },
+  "resources/img/tabrakan.jpg": {
+    "file": "assets/tabrakan-DGiuW4VI.jpg",
+    "src": "resources/img/tabrakan.jpg"
+  },
+  "resources/img/tatasurya.mp4": {
+    "file": "assets/tatasurya-DScVT0E6.mp4",
+    "src": "resources/img/tatasurya.mp4"
   },
   "resources/js/app.js": {
     "file": "assets/app-l0sNRNKZ.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/custom.js": {
+    "file": "assets/custom-CMuhQTn7.js",
+    "name": "custom",
+    "src": "resources/js/custom.js",
+    "isEntry": true
+  },
+  "resources/js/parallax.js": {
+    "file": "assets/parallax-Cnknb-NI.js",
+    "name": "parallax",
+    "src": "resources/js/parallax.js",
     "isEntry": true
   }
 }
