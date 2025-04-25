@@ -5,8 +5,7 @@ namespace App\Enums\Foods;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-
-enum Category: string implements HasLabel, HasColor
+enum Category: string implements HasColor, HasLabel
 {
     case SARAPAN = 'sarapan';
     case MAKAN_SIANG = 'makan-siang';
@@ -23,9 +22,9 @@ enum Category: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
-        return match($this){
+        return match ($this) {
             self::SARAPAN => 'gray',
             self::MAKAN_SIANG => 'success',
             self::MAKAN_MALAM => 'danger',
