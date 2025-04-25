@@ -32,15 +32,24 @@ class QuestionResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('Informasi Pertanyaan')
+                    ->description('Masukkan detail pertanyaan quiz')
+                    ->icon('heroicon-m-question-mark-circle')
+                    ->collapsible()
                     ->schema([
                         Forms\Components\Select::make('quiz_id')
                             ->label('Quiz')
                             ->native(false)
                             ->relationship('quiz', 'name')
-                            ->required(),
+                            ->required()
+                            ->searchable()
+                            ->placeholder('Pilih quiz')
+                            ->prefixIcon('heroicon-m-academic-cap'),
                         Forms\Components\TextInput::make('name')
                             ->label('Pertanyaan')
-                            ->required(),
+                            ->required()
+                            ->placeholder('Masukkan pertanyaan')
+                            ->columnSpanFull()
+                            ->prefixIcon('heroicon-m-question-mark-circle'),
                     ]),
             ]);
     }
@@ -50,30 +59,56 @@ class QuestionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('quiz.name')
-                    ->numeric()
-                    ->sortable(),
+                    ->label('Quiz')
+                    ->sortable()
+                    ->searchable()
+                    ->icon('heroicon-m-academic-cap')
+                    ->iconColor('primary'),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Pertanyaan')
+                    ->searchable()
+                    ->wrap()
+                    ->icon('heroicon-m-question-mark-circle')
+                    ->iconColor('success')
+                    ->weight('medium'),
+                Tables\Columns\TextColumn::make('answers_count')
+                    ->label('Jumlah Jawaban')
+                    ->counts('answers')
+                    ->icon('heroicon-m-check-circle')
+                    ->color('info'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat pada')
+                    ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui pada')
+                    ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
+            ->striped()
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('Edit')
+                    ->icon('heroicon-m-pencil-square')
+                    ->color('warning'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label('Hapus')
+                        ->icon('heroicon-m-trash')
+                        ->color('danger'),
+                ])->icon('heroicon-m-chevron-down'),
+            ])
+            ->emptyStateIcon('heroicon-o-question-mark-circle')
+            ->emptyStateHeading('Belum ada pertanyaan')
+            ->emptyStateDescription('Mulai dengan menambahkan pertanyaan baru menggunakan tombol di atas.');
     }
 
     public static function getRelations(): array

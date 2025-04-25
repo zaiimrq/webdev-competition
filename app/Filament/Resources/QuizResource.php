@@ -33,20 +33,28 @@ class QuizResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('Informasi Quiz')
+                    ->description('Masukkan detail informasi quiz')
+                    ->icon('heroicon-m-academic-cap')
+                    ->collapsible()
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Nama Quiz')
+                            ->required()
+                            ->placeholder('Masukkan nama quiz')
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                            ->required(),
+                            ->prefixIcon('heroicon-m-document-text'),
                         Forms\Components\TextInput::make('slug')
                             ->readonly()
                             ->required()
-                            ->unique(Quiz::class, 'slug'),
+                            ->unique(Quiz::class, 'slug')
+                            ->prefixIcon('heroicon-m-link'),
                         Forms\Components\Textarea::make('description')
                             ->label('Deskripsi')
-                            ->rows(3),
-                    ]),
+                            ->rows(3)
+                            ->placeholder('Masukkan deskripsi quiz')
+                            ->columnSpanFull(),
+                    ])->columns(2),
             ]);
     }
 
@@ -54,33 +62,56 @@ class QuizResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Nama Quiz')
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-m-academic-cap')
+                    ->iconColor('primary')
+                    ->weight('medium'),
                 Tables\Columns\TextColumn::make('description')
+                    ->label('Deskripsi')
                     ->limit(50)
-                    ->searchable(),
+                    ->searchable()
+                    ->icon('heroicon-m-document-text'),
+                Tables\Columns\TextColumn::make('questions_count')
+                    ->label('Jumlah Soal')
+                    ->counts('questions')
+                    ->icon('heroicon-m-question-mark-circle')
+                    ->color('success'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat pada')
+                    ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui pada')
+                    ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
+            ->striped()
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('Edit')
+                    ->icon('heroicon-m-pencil-square')
+                    ->color('warning'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label('Hapus')
+                        ->icon('heroicon-m-trash')
+                        ->color('danger'),
+                ])->icon('heroicon-m-chevron-down'),
+            ])
+            ->emptyStateIcon('heroicon-o-academic-cap')
+            ->emptyStateHeading('Belum ada quiz')
+            ->emptyStateDescription('Mulai dengan menambahkan quiz baru menggunakan tombol di atas.');
     }
 
     public static function getRelations(): array

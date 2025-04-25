@@ -31,26 +31,36 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('Informasi Pengguna')
+                    ->description('Masukkan detail informasi pengguna')
+                    ->icon('heroicon-m-user')
+                    ->collapsible()
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Nama')
-                            ->required(),
+                            ->required()
+                            ->placeholder('Masukkan nama pengguna')
+                            ->prefixIcon('heroicon-m-user'),
                         Forms\Components\TextInput::make('email')
                             ->email()
-                            ->required(),
+                            ->required()
+                            ->placeholder('Masukkan email pengguna')
+                            ->prefixIcon('heroicon-m-envelope'),
                         Forms\Components\DateTimePicker::make('email_verified_at')
-                            ->label('Email Terverifikasi'),
+                            ->label('Email Terverifikasi')
+                            ->prefixIcon('heroicon-m-check-badge'),
                         Forms\Components\TextInput::make('password')
                             ->password()
                             ->required()
-                            ->hiddenOn('edit'),
+                            ->hiddenOn('edit')
+                            ->prefixIcon('heroicon-m-key'),
                         Forms\Components\Select::make('role')
                             ->label('Peran')
                             ->options(\App\Enums\Users\Role::class)
                             ->default(\App\Enums\Users\Role::USER)
                             ->native(false)
-                            ->required(),
-                    ]),
+                            ->required()
+                            ->prefixIcon('heroicon-m-user-circle'),
+                    ])->columns(2),
             ]);
     }
 
@@ -59,34 +69,56 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Nama')
+                    ->searchable()
+                    ->sortable()
+                    ->icon('heroicon-m-user')
+                    ->iconColor('primary')
+                    ->weight('medium'),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Email')
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->icon('heroicon-m-envelope')
+                    ->iconColor('success'),
+                Tables\Columns\IconColumn::make('email_verified_at')
+                    ->label('Status Email')
+                    ->boolean()
+                    ->trueIcon('heroicon-m-check-badge')
+                    ->falseIcon('heroicon-m-x-circle')
+                    ->trueColor('success')
+                    ->falseColor('danger'),
                 Tables\Columns\TextColumn::make('role')
-                    ->searchable(),
+                    ->label('Peran')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat pada')
+                    ->dateTime('d M Y, H:i')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
+            ->striped()
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('Edit')
+                    ->icon('heroicon-m-pencil-square')
+                    ->color('warning'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label('Hapus')
+                        ->icon('heroicon-m-trash')
+                        ->color('danger'),
+                ])->icon('heroicon-m-chevron-down'),
+            ])
+            ->emptyStateIcon('heroicon-o-users')
+            ->emptyStateHeading('Belum ada pengguna')
+            ->emptyStateDescription('Mulai dengan menambahkan pengguna baru menggunakan tombol di atas.');
     }
 
     public static function getRelations(): array

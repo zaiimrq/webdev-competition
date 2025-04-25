@@ -13,7 +13,10 @@ class ListAnswers extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Tambah Jawaban')
+                ->icon('heroicon-m-plus')
+                ->color('primary'),
         ];
     }
 }

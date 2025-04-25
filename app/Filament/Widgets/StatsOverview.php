@@ -29,9 +29,9 @@ class StatsOverview extends BaseWidget
                 ->descriptionIcon('heroicon-m-users')
                 ->color('warning'),
 
-            Stat::make('Quiz Selesai', UserAnswer::distinct('quiz_id')->count())
-                ->description('Quiz yang telah diselesaikan')
-                ->descriptionIcon('heroicon-m-check-badge')
+            Stat::make('User Mengerjakan', UserAnswer::distinct('user_id')->count())
+                ->description('Jumlah pengguna yang mengerjakan quiz')
+                ->descriptionIcon('heroicon-m-check-circle')
                 ->color('success'),
         ];
     }

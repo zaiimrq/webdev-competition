@@ -13,4 +13,9 @@ class CreateAnswer extends CreateRecord
     {
         return $this->getResource()::getUrl('index');
     }
+
+    protected function getCreatedNotificationTitle(): ?string
+    {
+        return 'Jawaban berhasil ditambahkan';
+    }
 }

@@ -13,7 +13,25 @@ class EditQuestion extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->label('Hapus')
+                ->icon('heroicon-m-trash')
+                ->color('danger')
+                ->requiresConfirmation()
+                ->modalHeading('Hapus Pertanyaan')
+                ->modalDescription('Apakah Anda yakin ingin menghapus pertanyaan ini? Tindakan ini tidak dapat dibatalkan.')
+                ->modalSubmitActionLabel('Ya, Hapus')
+                ->modalCancelActionLabel('Batal'),
         ];
+    }
+
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return 'Pertanyaan berhasil diperbarui';
+    }
+
+    protected function getDeletedNotificationTitle(): ?string
+    {
+        return 'Pertanyaan berhasil dihapus';
     }
 }
