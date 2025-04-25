@@ -12,7 +12,7 @@
     <link href="https://unpkg.com/feather-icons/dist/feather.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-br from-green-50 to-teal-50">
+<body class="overflow-x-hidden bg-gradient-to-br from-green-50 to-teal-50">
 
     {{ $slot }}
 
