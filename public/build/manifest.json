@@ -15,11 +15,5 @@
     "name": "custom",
     "src": "resources/js/custom.js",
     "isEntry": true
-  },
-  "resources/js/parallax.js": {
-    "file": "assets/parallax-Cnknb-NI.js",
-    "name": "parallax",
-    "src": "resources/js/parallax.js",
-    "isEntry": true
   }
 }

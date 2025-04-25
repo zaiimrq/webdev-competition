@@ -1,1 +1,0 @@
-let e=document.getElementById("stars"),l=document.getElementById("meteorid"),o=document.getElementById("rocket"),n=document.getElementById("text");window.addEventListener("scroll",function(){let t=window.scrollY;e.style.left=t*.25+"px",o.style.top=t*-.5+"px",l.style.top=t*.5+"px",n.style.marginBottom=t*1+"px"});

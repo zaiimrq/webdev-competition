@@ -10,7 +10,6 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/parallax.js' ,
                 'resources/js/custom.js'
             ],
             refresh: [`resources/views/**/*`],
