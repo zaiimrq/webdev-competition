@@ -12,7 +12,7 @@ class Food extends Model
     protected $fillable = [
         'name',
         'protein',
-        'carbohydrates',
+        'carbohydrate',
         'fat',
         'calories',
         'category',
